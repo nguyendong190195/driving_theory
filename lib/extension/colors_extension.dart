@@ -40,7 +40,7 @@ extension HexColor on Color {
 
 
   static Color getMultipleColorFromIndex(int index) {
-    switch(index){
+    switch(index%5){
       case 0:
         return HexColor.hexToColor('#ef5362');
         break;

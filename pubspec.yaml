@@ -30,6 +30,7 @@ dependencies:
   cupertino_icons: ^1.0.0
   launch_review: ^1.0.1
   flutter_email_sender: ^4.0.0
+  percent_indicator: "^2.1.7+2"
 
 dev_dependencies:
   flutter_test:
@@ -49,6 +50,7 @@ flutter:
   assets:
      - images/logo_app_2.jpg
      - images/logo_app_2.png
+     - data/data.json
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

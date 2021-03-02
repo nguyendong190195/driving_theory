@@ -1,0 +1,174 @@
+{
+  "data": [
+    {
+      "topic": "Alertness",
+      "listQuestion": [
+        {
+          "question_en": "What should you do before making a U-turn?",
+          "question_vi": "Bạn nên làm gì trước khi quay đầu xe?",
+          "question_code": "AB2001",
+          "answers": [
+            {
+              "answer_en": "A. Give an arm signal as well as using your indicators",
+              "answer_vi": "Đưa ra tín hiệu bằng cánh tay đồng thời sử dụng xi nhan",
+              "answer_code": "AB2001_image",
+              "correct": true
+            },
+            {
+              "answer_en": "A. Give an arm signal as well as using your indicators",
+              "answer_vi": "Đưa ra tín hiệu bằng cánh tay đồng thời sử dụng xi nhan",
+              "answer_code": "AB2001_image",
+              "correct": true
+            },
+            {
+              "answer_en": "A. Give an arm signal as well as using your indicators",
+              "answer_vi": "Đưa ra tín hiệu bằng cánh tay đồng thời sử dụng xi nhan",
+              "answer_code": "AB2001_image",
+              "correct": true
+            },
+            {
+              "answer_en": "A. Give an arm signal as well as using your indicators",
+              "answer_vi": "Đưa ra tín hiệu bằng cánh tay đồng thời sử dụng xi nhan",
+              "answer_code": "AB2001_image",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "question_en": "What should you do before making a U-turn?",
+          "question_vi": "Bạn nên làm gì trước khi quay đầu xe?",
+          "question_code": "AB2001",
+          "answers": [
+            {
+              "answer_en": "A. Give an arm signal as well as using your indicators",
+              "answer_vi": "Đưa ra tín hiệu bằng cánh tay đồng thời sử dụng xi nhan",
+              "answer_code": "AB2001_image",
+              "correct": true
+            },
+            {
+              "answer_en": "A. Give an arm signal as well as using your indicators",
+              "answer_vi": "Đưa ra tín hiệu bằng cánh tay đồng thời sử dụng xi nhan",
+              "answer_code": "AB2001_image",
+              "correct": true
+            },
+            {
+              "answer_en": "A. Give an arm signal as well as using your indicators",
+              "answer_vi": "Đưa ra tín hiệu bằng cánh tay đồng thời sử dụng xi nhan",
+              "answer_code": "AB2001_image",
+              "correct": true
+            },
+            {
+              "answer_en": "A. Give an arm signal as well as using your indicators",
+              "answer_vi": "Đưa ra tín hiệu bằng cánh tay đồng thời sử dụng xi nhan",
+              "answer_code": "AB2001_image",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "question_en": "What should you do before making a U-turn?",
+          "question_vi": "Bạn nên làm gì trước khi quay đầu xe?",
+          "question_code": "AB2001",
+          "answers": [
+            {
+              "answer_en": "A. Give an arm signal as well as using your indicators",
+              "answer_vi": "Đưa ra tín hiệu bằng cánh tay đồng thời sử dụng xi nhan",
+              "answer_code": "AB2001_image",
+              "correct": true
+            },
+            {
+              "answer_en": "A. Give an arm signal as well as using your indicators",
+              "answer_vi": "Đưa ra tín hiệu bằng cánh tay đồng thời sử dụng xi nhan",
+              "answer_code": "AB2001_image",
+              "correct": true
+            },
+            {
+              "answer_en": "A. Give an arm signal as well as using your indicators",
+              "answer_vi": "Đưa ra tín hiệu bằng cánh tay đồng thời sử dụng xi nhan",
+              "answer_code": "AB2001_image",
+              "correct": true
+            },
+            {
+              "answer_en": "A. Give an arm signal as well as using your indicators",
+              "answer_vi": "Đưa ra tín hiệu bằng cánh tay đồng thời sử dụng xi nhan",
+              "answer_code": "AB2001_image",
+              "correct": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "topic": "Alertness 1",
+      "listQuestion": [
+        {
+          "question_en": "What should you do before making a U-turn?",
+          "question_vi": "Bạn nên làm gì trước khi quay đầu xe?",
+          "question_code": "AB2001",
+          "answers": [
+            {
+              "answer_en": "A. Give an arm signal as well as using your indicators",
+              "answer_vi": "Đưa ra tín hiệu bằng cánh tay đồng thời sử dụng xi nhan",
+              "answer_code": "AB2001_image",
+              "correct": true
+            },
+            {
+              "answer_en": "A. Give an arm signal as well as using your indicators",
+              "answer_vi": "Đưa ra tín hiệu bằng cánh tay đồng thời sử dụng xi nhan",
+              "answer_code": "AB2001_image",
+              "correct": true
+            },
+            {
+              "answer_en": "A. Give an arm signal as well as using your indicators",
+              "answer_vi": "Đưa ra tín hiệu bằng cánh tay đồng thời sử dụng xi nhan",
+              "answer_code": "AB2001_image",
+              "correct": true
+            },
+            {
+              "answer_en": "A. Give an arm signal as well as using your indicators",
+              "answer_vi": "Đưa ra tín hiệu bằng cánh tay đồng thời sử dụng xi nhan",
+              "answer_code": "AB2001_image",
+              "correct": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "topic": "Alertness 2",
+      "listQuestion": [
+        {
+          "question_en": "What should you do before making a U-turn?",
+          "question_vi": "Bạn nên làm gì trước khi quay đầu xe?",
+          "question_code": "AB2001",
+          "answers": [
+            {
+              "answer_en": "A. Give an arm signal as well as using your indicators",
+              "answer_vi": "Đưa ra tín hiệu bằng cánh tay đồng thời sử dụng xi nhan",
+              "answer_code": "AB2001_image",
+              "correct": true
+            },
+            {
+              "answer_en": "A. Give an arm signal as well as using your indicators",
+              "answer_vi": "Đưa ra tín hiệu bằng cánh tay đồng thời sử dụng xi nhan",
+              "answer_code": "AB2001_image",
+              "correct": true
+            },
+            {
+              "answer_en": "A. Give an arm signal as well as using your indicators",
+              "answer_vi": "Đưa ra tín hiệu bằng cánh tay đồng thời sử dụng xi nhan",
+              "answer_code": "AB2001_image",
+              "correct": true
+            },
+            {
+              "answer_en": "A. Give an arm signal as well as using your indicators",
+              "answer_vi": "Đưa ra tín hiệu bằng cánh tay đồng thời sử dụng xi nhan",
+              "answer_code": "AB2001_image",
+              "correct": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

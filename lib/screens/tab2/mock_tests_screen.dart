@@ -1,7 +1,10 @@
 import 'package:driving_theory/extension/colors_extension.dart';
+import 'package:driving_theory/models/topic_object.dart';
 import 'package:flutter/material.dart';
 
 class MockTestsScreen extends StatefulWidget {
+  List<Data> datas;
+  MockTestsScreen(this.datas);
   @override
   State<StatefulWidget> createState() {
     return _MockTestsState();
