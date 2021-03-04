@@ -1,7 +1,7 @@
 import 'package:driving_theory/extension/colors_extension.dart';
+import 'package:driving_theory/extension/flutter_email_sender.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_email_sender/flutter_email_sender.dart';
-import 'package:launch_review/launch_review.dart';
+// import 'package:flutter_email_sender/flutter_email_sender.dart';
 
 class HelpAndSupportScreen extends StatefulWidget {
   @override
@@ -54,8 +54,8 @@ class _HelpAndSupportState extends State<HelpAndSupportScreen> {
                       padding: EdgeInsets.all(16.0),
                       splashColor: Colors.blueAccent,
                       onPressed: () {
-                        LaunchReview.launch(
-                            androidAppId: "", iOSAppId: "1553850933");
+                        // LaunchReview.launch(
+                        //     androidAppId: "", iOSAppId: "1553850933");
                       },
                       child: Text(
                         "RATE US",
@@ -81,7 +81,7 @@ class _HelpAndSupportState extends State<HelpAndSupportScreen> {
                           'Dear all.\n I am ........ I would love to join in an A2 English Online Class. My availability: ......\nI am looking forward to hearing from you. Thanks and Best Regards',
                           subject: 'Book an A2 English Online Class',
                           recipients: ['kmsoftwareltd@gmail.com'],
-                          isHTML: false,
+                          isHTML: false, attachmentPaths: [],
                         );
 
                         FlutterEmailSender.send(email);
@@ -110,7 +110,7 @@ class _HelpAndSupportState extends State<HelpAndSupportScreen> {
                           'Dear all.\n I am ........ I would love to join in a B1 English Online Class. My availability: ......\nI am looking forward to hearing from you. Thanks and Best Regards',
                           subject: 'Book a B1 English Online Class',
                           recipients: ['kmsoftwareltd@gmail.com'],
-                          isHTML: false,
+                          isHTML: false, attachmentPaths: [],
                         );
 
                         FlutterEmailSender.send(email);
@@ -139,7 +139,7 @@ class _HelpAndSupportState extends State<HelpAndSupportScreen> {
                           '',
                           subject: 'Get your own topic',
                           recipients: ['kmsoftwareltd@gmail.com'],
-                          isHTML: false,
+                          isHTML: false, attachmentPaths: [],
                         );
 
                         FlutterEmailSender.send(email);

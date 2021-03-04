@@ -1,8 +1,8 @@
+import 'package:driving_theory/extension/circular_percent_indicator.dart';
 import 'package:driving_theory/extension/colors_extension.dart';
 import 'package:driving_theory/models/topic_object.dart';
 import 'package:driving_theory/screens/tab1/review_question_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:percent_indicator/percent_indicator.dart';
 
 class PracticeAllQuestionScreen extends StatefulWidget {
   List<Data> data;
@@ -26,7 +26,8 @@ class _PracticeAllQuestionState extends State<PracticeAllQuestionScreen> {
         child: ListView.builder(itemBuilder: (BuildContext context, int index) {
           return GestureDetector(
             onTap: () {
-              var screen = ReviewQuestionScreen(widget.data[index]);
+              Data data = widget.data[index];
+              var screen = ReviewQuestionScreen(data.clone());
               Navigator.of(context)
                   .push(MaterialPageRoute(builder: (context) => screen));
             },
@@ -46,7 +47,7 @@ class _PracticeAllQuestionState extends State<PracticeAllQuestionScreen> {
       color: Colors.white,
       elevation: 8.0,
       shadowColor: HexColor.getMultipleColorFromIndex(index),
-      margin: EdgeInsets.fromLTRB(8.0, 8.0, 0.0, 8.0),
+      margin: EdgeInsets.only(top: 10, left: 10, right: 10),
       child: Container(
         child: ListTile(
           contentPadding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),

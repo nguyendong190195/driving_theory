@@ -19,7 +19,12 @@ class MyApp extends StatelessWidget {
         future: DefaultAssetBundle.of(context).loadString('data/data.json'),
         builder: (context, snapshot) {
           var new_data = json.decode(snapshot.data.toString());
-          DataTopic data = DataTopic.fromJson(new_data);
+          // DataTopic data = DataTopic.fromJson(new_data);
+          DataTopic data = DataTopic('title');
+          if (new_data!= null){
+            data = DataTopic.fromJson(new_data);
+          }
+
           List<Widget> _widgetOptions = <Widget>[];
           _widgetOptions.add(PracticeAllQuestionScreen(data.data));
           _widgetOptions.add(MockTestsScreen(data.data));

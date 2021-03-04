@@ -1,16 +1,15 @@
 class DataTopic {
-  List<Data> data;
+  late String title;
+  late List<Data> data;
 
-  DataTopic({this.data});
+  DataTopic(this.title);
 
   DataTopic.fromJson(Map<String, dynamic> json) {
-    if (json!= null) {
-      if (json['data'] != null) {
-        data = new List<Data>();
-        json['data'].forEach((v) {
-          data.add(new Data.fromJson(v));
-        });
-      }
+    if (json['data'] != null) {
+      data = <Data>[];
+      json['data'].forEach((v) {
+        data.add(new Data.fromJson(v));
+      });
     }
   }
 
@@ -24,15 +23,27 @@ class DataTopic {
 }
 
 class Data {
-  String topic;
-  List<ListQuestion> listQuestion;
+  late String topic;
+  late List<ListQuestion> listQuestion;
 
-  Data({this.topic, this.listQuestion});
+  Data(this.topic, this.listQuestion);
+
+  Data clone() {
+    Data data = Data(topic, listQuestion);
+    data.topic = topic;
+    List<ListQuestion> listDataQuestion = <ListQuestion>[];
+
+    for (ListQuestion item in listQuestion) {
+      listDataQuestion.add(item.clone());
+    }
+    data.listQuestion = listDataQuestion;
+    return data;
+  }
 
   Data.fromJson(Map<String, dynamic> json) {
     topic = json['topic'];
     if (json['listQuestion'] != null) {
-      listQuestion = new List<ListQuestion>();
+      listQuestion = <ListQuestion>[];
       json['listQuestion'].forEach((v) {
         listQuestion.add(new ListQuestion.fromJson(v));
       });
@@ -50,20 +61,33 @@ class Data {
 }
 
 class ListQuestion {
-  String questionEn;
-  String questionVi;
-  String questionCode;
-  List<Answers> answers;
+  late String questionEn;
+  late String questionVi;
+  late String questionCode;
+  late List<Answers> answers;
 
-  ListQuestion(
-      {this.questionEn, this.questionVi, this.questionCode, this.answers});
+  ListQuestion(this.questionEn);
+
+  ListQuestion clone() {
+    ListQuestion question = ListQuestion(questionEn);
+    question.questionEn = questionEn;
+    question.questionVi = questionVi;
+    question.questionCode = questionCode;
+    List<Answers> anserClone = <Answers>[];
+    for (Answers item in answers) {
+      item = item.clone();
+      anserClone.add(item);
+    }
+    question.answers = anserClone;
+    return question;
+  }
 
   ListQuestion.fromJson(Map<String, dynamic> json) {
     questionEn = json['question_en'];
     questionVi = json['question_vi'];
     questionCode = json['question_code'];
     if (json['answers'] != null) {
-      answers = new List<Answers>();
+      answers = <Answers>[];
       json['answers'].forEach((v) {
         answers.add(new Answers.fromJson(v));
       });
@@ -83,12 +107,23 @@ class ListQuestion {
 }
 
 class Answers {
-  String answerEn;
-  String answerVi;
-  String answerCode;
-  bool correct;
+  late String answerEn;
+  late String answerVi;
+  late String answerCode;
+  late bool correct;
+  late bool isSelected = false;
 
-  Answers({this.answerEn, this.answerVi, this.answerCode, this.correct});
+  Answers clone() {
+    Answers answersClone = new Answers(answerEn);
+    answersClone.answerEn = answerEn;
+    answersClone.answerVi = answerVi;
+    answersClone.answerCode = answerCode;
+    answersClone.correct = correct;
+    answersClone.isSelected = isSelected;
+    return answersClone;
+  }
+
+  Answers(this.answerEn);
 
   Answers.fromJson(Map<String, dynamic> json) {
     answerEn = json['answer_en'];
