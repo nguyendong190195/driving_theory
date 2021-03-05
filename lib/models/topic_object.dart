@@ -1,6 +1,6 @@
 class DataTopic {
   late String title;
-  late List<Data> data;
+   List<Data> data = <Data>[];
 
   DataTopic(this.title);
 
@@ -11,6 +11,9 @@ class DataTopic {
         data.add(new Data.fromJson(v));
       });
     }
+    if (json['title'] != null) {
+      title = json['title'];
+    }
   }
 
   Map<String, dynamic> toJson() {
@@ -18,7 +21,21 @@ class DataTopic {
     if (this.data != null) {
       data['data'] = this.data.map((v) => v.toJson()).toList();
     }
+    if (this.title != null) {
+      data['title'] = this.title;
+    }
     return data;
+  }
+
+  DataTopic clone() {
+    DataTopic dataTopic = DataTopic('title');
+    dataTopic.title = 'title';
+    List<Data> listData = <Data>[];
+    for(Data item in data) {
+      listData.add(item.clone());
+    }
+    dataTopic.data = listData;
+    return dataTopic;
   }
 }
 
@@ -63,8 +80,9 @@ class Data {
 class ListQuestion {
   late String questionEn;
   late String questionVi;
-  late String questionCode;
+  late String? questionCode;
   late List<Answers> answers;
+  late bool isSelected = false;
 
   ListQuestion(this.questionEn);
 
@@ -85,7 +103,9 @@ class ListQuestion {
   ListQuestion.fromJson(Map<String, dynamic> json) {
     questionEn = json['question_en'];
     questionVi = json['question_vi'];
-    questionCode = json['question_code'];
+    questionCode = json['questionCode'];
+
+    if (json['isSelected'] != null) isSelected = json['isSelected'];
     if (json['answers'] != null) {
       answers = <Answers>[];
       json['answers'].forEach((v) {
@@ -98,6 +118,9 @@ class ListQuestion {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['question_en'] = this.questionEn;
     data['question_vi'] = this.questionVi;
+    if (this.isSelected != null) {
+      data['isSelected'] = this.isSelected;
+    }
     data['question_code'] = this.questionCode;
     if (this.answers != null) {
       data['answers'] = this.answers.map((v) => v.toJson()).toList();
@@ -129,6 +152,9 @@ class Answers {
     answerEn = json['answer_en'];
     answerVi = json['answer_vi'];
     answerCode = json['answer_code'];
+    if (json['isSelected'] != null) {
+      isSelected = json['isSelected'];
+    }
     correct = json['correct'];
   }
 
@@ -138,6 +164,8 @@ class Answers {
     data['answer_vi'] = this.answerVi;
     data['answer_code'] = this.answerCode;
     data['correct'] = this.correct;
+    data['isSelected'] = this.isSelected;
+
     return data;
   }
 }

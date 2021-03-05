@@ -7,29 +7,48 @@ import 'package:driving_theory/screens/tab1/practice_all_question_screen.dart';
 import 'package:driving_theory/screens/tab2/mock_tests_screen.dart';
 import 'package:driving_theory/screens/tab3/help_support_screen.dart';
 
+import 'extension/utility.dart';
+
 void main() => runApp(MyApp());
+
 class MyApp extends StatelessWidget {
   static const String _title = 'Flutter Code Sample';
 
   @override
   Widget build(BuildContext context) {
+    List<Widget> _widgetOptions = <Widget>[];
     return MaterialApp(
       title: _title,
       home: FutureBuilder(
-        future: DefaultAssetBundle.of(context).loadString('data/data.json'),
+        future: Utility.getDataByName(),
+        // future: DefaultAssetBundle.of(context).loadString('data/data.json'),
         builder: (context, snapshot) {
-          var new_data = json.decode(snapshot.data.toString());
-          // DataTopic data = DataTopic.fromJson(new_data);
-          DataTopic data = DataTopic('title');
-          if (new_data!= null){
-            data = DataTopic.fromJson(new_data);
+          DataTopic? data;
+          if (snapshot.data != null) {
+            data = snapshot.data as DataTopic;
           }
+          if (data != null && data.data != null && data.data.length > 0) {
+            _widgetOptions.add(PracticeAllQuestionScreen(data));
+            _widgetOptions.add(MockTestsScreen(data.data));
+            _widgetOptions.add(HelpAndSupportScreen());
+          }
+          return FutureBuilder(
+            future: DefaultAssetBundle.of(context).loadString('data/data.json'),
+            builder: (context1, snapshot1) {
+              var new_data = json.decode(snapshot1.data.toString());
+              DataTopic data = DataTopic('title');
+              if (new_data != null) {
+                data = DataTopic.fromJson(new_data);
+              }
 
-          List<Widget> _widgetOptions = <Widget>[];
-          _widgetOptions.add(PracticeAllQuestionScreen(data.data));
-          _widgetOptions.add(MockTestsScreen(data.data));
-          _widgetOptions.add(HelpAndSupportScreen());
-          return MyStatefulWidget(_widgetOptions);
+              if (data != null && new_data!= null && data.data != null && _widgetOptions.length > 0) {
+                _widgetOptions.add(PracticeAllQuestionScreen(data));
+                _widgetOptions.add(MockTestsScreen(data.data));
+                _widgetOptions.add(HelpAndSupportScreen());
+              }
+              return MyStatefulWidget(_widgetOptions);
+            },
+          );
         },
       ),
     );
@@ -39,6 +58,7 @@ class MyApp extends StatelessWidget {
 /// This is the stateful widget that the main application instantiates.
 class MyStatefulWidget extends StatefulWidget {
   List<Widget> widgets;
+
   MyStatefulWidget(this.widgets);
 
   @override
@@ -48,8 +68,10 @@ class MyStatefulWidget extends StatefulWidget {
 /// This is the private State class that goes with MyStatefulWidget.
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   int _selectedIndex = 0;
-  static const TextStyle optionStyle = TextStyle(fontSize: 12, fontWeight: FontWeight.normal);
-  static const TextStyle optionStyleNormal = TextStyle(fontSize: 12, fontWeight: FontWeight.normal);
+  static const TextStyle optionStyle =
+      TextStyle(fontSize: 12, fontWeight: FontWeight.normal);
+  static const TextStyle optionStyleNormal =
+      TextStyle(fontSize: 12, fontWeight: FontWeight.normal);
 
   // PracticeAllQuestionScreen(),
   // MockTestsScreen(),
@@ -63,9 +85,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: widget.widgets[_selectedIndex]
-      ),
+      body: Center(child: widget.widgets[_selectedIndex]),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(

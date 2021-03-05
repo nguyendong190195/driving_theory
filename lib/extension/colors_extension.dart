@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
 extension HexColor on Color {
-
-
   /// String is in the format "aabbcc" or "ffaabbcc" with an optional leading "#".
   static Color fromHex(String hexString) {
     final buffer = StringBuffer();
@@ -42,24 +40,24 @@ extension HexColor on Color {
     return HexColor.hexToColor('#bebebe');
   }
 
-
-  static Color colorAnswerNormal(){
+  static Color colorAnswerNormal() {
     return HexColor.hexToColor('#c4cdc1');
   }
 
-
-  static Color colorAnswerCorrect(){
+  static Color colorAnswerCorrect() {
     return HexColor.hexToColor('#658B6F');
   }
 
-  static Color colorAnswerFail(){
+  static Color colorAnswerSelected() {
+    return Colors.red[500]!;
+  }
+
+  static Color colorAnswerFail() {
     return HexColor.hexToColor('#a02515');
   }
 
-
-
-   static getMultipleColorFromIndex(int index) {
-    switch(index%5){
+  static getMultipleColorFromIndex(int index) {
+    switch (index % 5) {
       case 0:
         return HexColor.hexToColor('#ef5362');
         break;
@@ -80,4 +78,6 @@ extension HexColor on Color {
         break;
     }
   }
+
+
 }
