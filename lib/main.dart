@@ -23,14 +23,10 @@ class MyApp extends StatelessWidget {
         future: Utility.getDataByName(),
         // future: DefaultAssetBundle.of(context).loadString('data/data.json'),
         builder: (context, snapshot) {
-          DataTopic? data;
+          _widgetOptions.clear();
+          DataTopic? dataCache;
           if (snapshot.data != null) {
-            data = snapshot.data as DataTopic;
-          }
-          if (data != null && data.data != null && data.data.length > 0) {
-            _widgetOptions.add(PracticeAllQuestionScreen(data));
-            _widgetOptions.add(MockTestsScreen(data.data));
-            _widgetOptions.add(HelpAndSupportScreen());
+            dataCache = snapshot.data as DataTopic;
           }
           return FutureBuilder(
             future: DefaultAssetBundle.of(context).loadString('data/data.json'),
@@ -40,12 +36,12 @@ class MyApp extends StatelessWidget {
               if (new_data != null) {
                 data = DataTopic.fromJson(new_data);
               }
-
-              if (data != null && new_data!= null && data.data != null && _widgetOptions.length > 0) {
-                _widgetOptions.add(PracticeAllQuestionScreen(data));
-                _widgetOptions.add(MockTestsScreen(data.data));
+              if (data != null && new_data!= null && data.data != null) {
+                _widgetOptions.add(PracticeAllQuestionScreen(dataCache != null ? dataCache : data.clone()));
+                _widgetOptions.add(MockTestsScreen(data.clone()));
                 _widgetOptions.add(HelpAndSupportScreen());
               }
+
               return MyStatefulWidget(_widgetOptions);
             },
           );
@@ -85,7 +81,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(child: widget.widgets[_selectedIndex]),
+      body: Center(child: widget.widgets.length > 0 ? widget.widgets[_selectedIndex] : Container()),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(

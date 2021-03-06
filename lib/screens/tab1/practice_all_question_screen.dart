@@ -15,12 +15,6 @@ class PracticeAllQuestionScreen extends StatefulWidget {
   State<StatefulWidget> createState() {
     return _PracticeAllQuestionState();
   }
-
-  _onTapButton() {
-    print("your event here");
-  }
-
-
 }
 
 class _PracticeAllQuestionState extends State<PracticeAllQuestionScreen> {
@@ -49,30 +43,7 @@ class _PracticeAllQuestionState extends State<PracticeAllQuestionScreen> {
     );
   }
 
-  int numberCorrect(Data data) {
-    int numberSelected = 0;
-    int numberCountCorrect = 0;
-    for (ListQuestion item in data.listQuestion) {
-      int count = 0;
-      if (item.isSelected) {
-        numberSelected += 1;
-      }
-      for (Answers answer in item.answers) {
-        if (item.isSelected && (answer.isSelected && answer.correct)) {
-          count += 1;
-        }
-      }
-      if (count > 0) {
-        numberCountCorrect += 1;
-      }
-    }
-    if (numberSelected == 0) {
-      return 0;
-    }
-    double percent =
-        (numberCountCorrect.toDouble() / data.listQuestion.length) * 100;
-    return percent.round();
-  }
+
 
   void gotoReviewScreen(DataTopic data, int index) {
     var screen = ReviewQuestionScreen(data, index, _onTapButton);
@@ -117,5 +88,30 @@ class _PracticeAllQuestionState extends State<PracticeAllQuestionScreen> {
         ),
       ),
     );
+  }
+
+  int numberCorrect(Data data) {
+    int numberSelected = 0;
+    int numberCountCorrect = 0;
+    for (ListQuestion item in data.listQuestion) {
+      int count = 0;
+      if (item.isSelected) {
+        numberSelected += 1;
+      }
+      for (Answers answer in item.answers) {
+        if (item.isSelected && (answer.isSelected && answer.correct)) {
+          count += 1;
+        }
+      }
+      if (count > 0) {
+        numberCountCorrect += 1;
+      }
+    }
+    if (numberSelected == 0) {
+      return 0;
+    }
+    double percent =
+        (numberCountCorrect.toDouble() / data.listQuestion.length) * 100;
+    return percent.round();
   }
 }

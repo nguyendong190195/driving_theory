@@ -1,3 +1,4 @@
+
 import 'dart:ui';
 
 import 'package:driving_theory/extension/circular_percent_indicator.dart';
@@ -6,23 +7,23 @@ import 'package:driving_theory/extension/utility.dart';
 import 'package:driving_theory/models/topic_object.dart';
 import 'package:flutter/material.dart';
 
-class ReviewQuestionScreen extends StatefulWidget {
+class ReviewMockTestScreen extends StatefulWidget {
   DataTopic dataTopic;
   int index;
   late final VoidCallback onTap;
 
-  ReviewQuestionScreen(this.dataTopic, this.index, this.onTap);
+  ReviewMockTestScreen(this.dataTopic, this.index, this.onTap);
 
   @override
   State<StatefulWidget> createState() {
-    return _ReviewQuestionState();
+    return _ReviewMockTestState();
   }
 
 
 
 }
 
-class _ReviewQuestionState extends State<ReviewQuestionScreen> {
+class _ReviewMockTestState extends State<ReviewMockTestScreen> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -30,28 +31,7 @@ class _ReviewQuestionState extends State<ReviewQuestionScreen> {
       child: Scaffold(
         appBar: AppBar(
           title: Text(widget.dataTopic.data[widget.index].topic),
-          actions: <Widget>[
-            FlatButton(
-              textColor: Colors.white,
-              onPressed: () {
-                for (ListQuestion item in widget.dataTopic.data[widget.index].listQuestion) {
-                  item.isSelected = false;
-                  for (Answers answer in item.answers) {
-                    answer.isSelected = false;
-                  }
-                }
-                setState(() {
-                  widget.dataTopic.title = '';
-                  Utility.saveDataByName(widget.dataTopic);
-                });
-              },
-              child: Text(
-                'Reset',
-                style: TextStyle(fontSize: 16),
-              ),
-              shape: CircleBorder(side: BorderSide(color: Colors.transparent)),
-            ),
-          ],
+
         ),
         body: Container(
           child: (numberTotal() > 0 ? getColumnPercent() : getColumnNonePercent()),
@@ -61,7 +41,7 @@ class _ReviewQuestionState extends State<ReviewQuestionScreen> {
   }
 
   Future<bool> _onBackPressed() async {
-    widget.onTap();
+    Navigator.of(context).popUntil((route) => route.isFirst);
     return true;
   }
 
@@ -115,28 +95,6 @@ class _ReviewQuestionState extends State<ReviewQuestionScreen> {
                           Container(
                               margin: EdgeInsets.only(left: 10),
                               child: Text('Correct'))
-                        ],
-                      ),
-                    )),
-                Expanded(
-                    child: Center(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          CircularPercentIndicator(
-                            radius: 40.0,
-                            lineWidth: 3.0,
-                            percent: numberTotal() * 0.01,
-                            progressColor: HexColor.mainColor(),
-                            center: new Text(numberTotal().toString() + '%',
-                                style: TextStyle(
-                                    color: HexColor.mainColor(),
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 12)),
-                          ),
-                          Container(
-                              margin: EdgeInsets.only(left: 10),
-                              child: Text('Total'))
                         ],
                       ),
                     )),
@@ -208,7 +166,7 @@ class _ReviewQuestionState extends State<ReviewQuestionScreen> {
           children: [
             ListTile(
               contentPadding:
-                  EdgeInsets.symmetric(horizontal: 8.0, vertical: 0.0),
+              EdgeInsets.symmetric(horizontal: 8.0, vertical: 0.0),
               title: Text(
                 (index + 1).toString() + '. ' + question.questionEn,
                 style: Utility.textStyleQuestionEn,
@@ -246,8 +204,6 @@ class _ReviewQuestionState extends State<ReviewQuestionScreen> {
           question.answers[numAnswer].isSelected = true;
           setState(() {
             question.isSelected = true;
-            widget.dataTopic.title = '';
-            Utility.saveDataByName(widget.dataTopic);
           });
         }
       }   ,
@@ -266,37 +222,37 @@ class _ReviewQuestionState extends State<ReviewQuestionScreen> {
                 Expanded(
                   child: Center(
                       child: Container(
-                    width: 30,
-                    height: 30,
-                    child: Center(
-                        child: Text(
-                      Utility.getTitleAnswer(numAnswer),
-                      style: Utility.textStyleTitleAnswer,
-                    )),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        color: HexColor.mainColor()),
-                  )),
+                        width: 30,
+                        height: 30,
+                        child: Center(
+                            child: Text(
+                              Utility.getTitleAnswer(numAnswer),
+                              style: Utility.textStyleTitleAnswer,
+                            )),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            color: HexColor.mainColor()),
+                      )),
                   flex: 2,
                 ),
                 Expanded(
                   flex: 15,
                   child: ListTile(
                     contentPadding:
-                        EdgeInsets.symmetric(horizontal: 8.0, vertical: 5.0),
+                    EdgeInsets.symmetric(horizontal: 8.0, vertical: 5.0),
                     title: Text(
                       question.answers[numAnswer].answerEn,
                       style: (question.isSelected &&
-                              (question.answers[numAnswer].correct ||
-                                  question.answers[numAnswer].isSelected))
+                          (question.answers[numAnswer].correct ||
+                              question.answers[numAnswer].isSelected))
                           ? Utility.textStyleAnswerEnWhite
                           : Utility.textStyleAnswerEn,
                     ),
                     subtitle: Text(
                       question.answers[numAnswer].answerVi,
                       style: (question.isSelected &&
-                              (question.answers[numAnswer].correct ||
-                                  question.answers[numAnswer].isSelected))
+                          (question.answers[numAnswer].correct ||
+                              question.answers[numAnswer].isSelected))
                           ? Utility.textStyleAnswerViWhite
                           : Utility.textStyleAnswerVi,
                     ),

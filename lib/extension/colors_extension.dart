@@ -29,11 +29,11 @@ extension HexColor on Color {
   }
 
   static Color colorGreen() {
-    return HexColor.hexToColor('#fce4ec');
+    return HexColor.hexToColor('#aaf454');
   }
 
   static Color colorButton() {
-    return HexColor.hexToColor('#f48fb1');
+    return HexColor.mainColor();
   }
 
   static Color colorSeparator() {
