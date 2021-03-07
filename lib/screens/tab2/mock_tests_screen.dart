@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 class MockTestsScreen extends StatefulWidget {
   DataTopic dataTopic;
   late List<ListQuestion> datas = <ListQuestion>[];
-
   MockTestsScreen(this.dataTopic);
 
   @override
@@ -70,7 +69,7 @@ class _MockTestsState extends State<MockTestsScreen> {
                               widget.datas[new Random().nextInt(50)];
                           dataRandom.add(question);
                         }
-                        var screen = StartedTestsScreen(dataRandom);
+                        var screen = StartedTestsScreen(widget.dataTopic.data[0].listQuestion);
                         Navigator.of(context).push(
                             MaterialPageRoute(settings: RouteSettings(name: "/Page1"),builder: (context) => screen));
                       },

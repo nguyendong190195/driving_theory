@@ -1,4 +1,3 @@
-
 import 'dart:ui';
 
 import 'package:driving_theory/extension/circular_percent_indicator.dart';
@@ -18,9 +17,6 @@ class ReviewMockTestScreen extends StatefulWidget {
   State<StatefulWidget> createState() {
     return _ReviewMockTestState();
   }
-
-
-
 }
 
 class _ReviewMockTestState extends State<ReviewMockTestScreen> {
@@ -31,10 +27,9 @@ class _ReviewMockTestState extends State<ReviewMockTestScreen> {
       child: Scaffold(
         appBar: AppBar(
           title: Text(widget.dataTopic.data[widget.index].topic),
-
         ),
         body: Container(
-          child: (numberTotal() > 0 ? getColumnPercent() : getColumnNonePercent()),
+          child: getColumnPercent(),
         ),
       ),
     );
@@ -45,7 +40,7 @@ class _ReviewMockTestState extends State<ReviewMockTestScreen> {
     return true;
   }
 
-  Column getColumnNonePercent () {
+  Column getColumnNonePercent() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -58,48 +53,63 @@ class _ReviewMockTestState extends State<ReviewMockTestScreen> {
                 itemBuilder: (BuildContext context, int index) {
                   return buildItemReview(index);
                 },
-                itemCount: widget.dataTopic.data[widget.index].listQuestion.length,
+                itemCount:
+                    widget.dataTopic.data[widget.index].listQuestion.length,
               )),
         ),
       ],
     );
   }
-  Column getColumnPercent () {
+
+  Column getColumnPercent() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Expanded(
-          flex: 1,
-          child: Container(
-            child: Row(
-              children: [
-                Expanded(
-                    child: Center(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Container(
-                            margin: EdgeInsets.only(left: 8),
-                            child: CircularPercentIndicator(
-                              radius: 40.0,
-                              lineWidth: 3.0,
-                              percent: numberCorrect() * 0.01,
-                              progressColor: Colors.green,
-                              center: new Text(numberCorrect().toString() + '%',
-                                  style: TextStyle(
-                                      color: Colors.green,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 12)),
-                            ),
-                          ),
-                          Container(
-                              margin: EdgeInsets.only(left: 10),
-                              child: Text('Correct'))
-                        ],
-                      ),
-                    )),
-              ],
-            ),
+        Container(
+          color: Colors.orange,
+          child: Column(
+            children: [
+              Padding(
+                padding: EdgeInsets.only(top: 5),
+                child: Center(
+                    child: Text(
+                  'Your achieve',
+                  style: TextStyle(fontSize: 18.0, color: Colors.white, fontWeight: FontWeight.w600),
+                ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 5),
+                child: Center(
+                    child: Text(percentTotal().toString() + '%',
+                        style: TextStyle(
+                            fontSize: 30.0,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold))),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 10),
+                child: Center(
+                    child: Text(
+                        'You has answered ' +
+                            numberCorrect().toString() +
+                            ' out of 50 questions correctly',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 18.0,
+                            color: Colors.white,
+                            fontWeight: FontWeight.normal))),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 5, bottom: 8),
+                child: Center(
+                    child: Text(numberCorrect() > 43 ? 'PASS' : 'FAIL',
+                        style: TextStyle(
+                            fontSize: 27.0,
+                            color: numberCorrect() > 43 ? Colors.green : Colors.redAccent,
+                            fontWeight: FontWeight.bold))),
+              ),
+            ],
           ),
         ),
         Expanded(
@@ -111,7 +121,8 @@ class _ReviewMockTestState extends State<ReviewMockTestScreen> {
                 itemBuilder: (BuildContext context, int index) {
                   return buildItemReview(index);
                 },
-                itemCount: widget.dataTopic.data[widget.index].listQuestion.length,
+                itemCount:
+                    widget.dataTopic.data[widget.index].listQuestion.length,
               )),
         ),
       ],
@@ -120,21 +131,30 @@ class _ReviewMockTestState extends State<ReviewMockTestScreen> {
 
   int numberTotal() {
     int number = 0;
-    for (ListQuestion item in widget.dataTopic.data[widget.index].listQuestion) {
+    for (ListQuestion item
+        in widget.dataTopic.data[widget.index].listQuestion) {
       if (item.isSelected) {
         number += 1;
       }
     }
-    double percent =
-        (number.toDouble() / widget.dataTopic.data[widget.index].listQuestion.length.toDouble()) * 100;
+    double percent = (number.toDouble() /
+            widget.dataTopic.data[widget.index].listQuestion.length
+                .toDouble()) *
+        100;
     percent.round();
+    return percent.round();
+  }
+
+  int percentTotal() {
+    double percent = numberCorrect().toDouble() / 50.toDouble();
     return percent.round();
   }
 
   int numberCorrect() {
     int numberSelected = 0;
     int numberCountCorrect = 0;
-    for (ListQuestion item in widget.dataTopic.data[widget.index].listQuestion) {
+    for (ListQuestion item
+        in widget.dataTopic.data[widget.index].listQuestion) {
       int count = 0;
       if (item.isSelected) {
         numberSelected += 1;
@@ -151,13 +171,13 @@ class _ReviewMockTestState extends State<ReviewMockTestScreen> {
     if (numberSelected == 0) {
       return 0;
     }
-    double percent =
-        (numberCountCorrect.toDouble() / widget.dataTopic.data[widget.index].listQuestion.length) * 100;
-    return percent.round();
+
+    return numberCountCorrect;
   }
 
   Widget buildItemReview(int index) {
-    ListQuestion question = widget.dataTopic.data[widget.index].listQuestion[index];
+    ListQuestion question =
+        widget.dataTopic.data[widget.index].listQuestion[index];
     return Container(
       child: Card(
         color: Colors.white,
@@ -166,7 +186,7 @@ class _ReviewMockTestState extends State<ReviewMockTestScreen> {
           children: [
             ListTile(
               contentPadding:
-              EdgeInsets.symmetric(horizontal: 8.0, vertical: 0.0),
+                  EdgeInsets.symmetric(horizontal: 8.0, vertical: 0.0),
               title: Text(
                 (index + 1).toString() + '. ' + question.questionEn,
                 style: Utility.textStyleQuestionEn,
@@ -206,7 +226,7 @@ class _ReviewMockTestState extends State<ReviewMockTestScreen> {
             question.isSelected = true;
           });
         }
-      }   ,
+      },
       child: Container(
         margin: EdgeInsets.only(left: 5, right: 5),
         child: Expanded(
@@ -222,37 +242,37 @@ class _ReviewMockTestState extends State<ReviewMockTestScreen> {
                 Expanded(
                   child: Center(
                       child: Container(
-                        width: 30,
-                        height: 30,
-                        child: Center(
-                            child: Text(
-                              Utility.getTitleAnswer(numAnswer),
-                              style: Utility.textStyleTitleAnswer,
-                            )),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15),
-                            color: HexColor.mainColor()),
-                      )),
+                    width: 30,
+                    height: 30,
+                    child: Center(
+                        child: Text(
+                      Utility.getTitleAnswer(numAnswer),
+                      style: Utility.textStyleTitleAnswer,
+                    )),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15),
+                        color: HexColor.mainColor()),
+                  )),
                   flex: 2,
                 ),
                 Expanded(
                   flex: 15,
                   child: ListTile(
                     contentPadding:
-                    EdgeInsets.symmetric(horizontal: 8.0, vertical: 5.0),
+                        EdgeInsets.symmetric(horizontal: 8.0, vertical: 5.0),
                     title: Text(
                       question.answers[numAnswer].answerEn,
                       style: (question.isSelected &&
-                          (question.answers[numAnswer].correct ||
-                              question.answers[numAnswer].isSelected))
+                              (question.answers[numAnswer].correct ||
+                                  question.answers[numAnswer].isSelected))
                           ? Utility.textStyleAnswerEnWhite
                           : Utility.textStyleAnswerEn,
                     ),
                     subtitle: Text(
                       question.answers[numAnswer].answerVi,
                       style: (question.isSelected &&
-                          (question.answers[numAnswer].correct ||
-                              question.answers[numAnswer].isSelected))
+                              (question.answers[numAnswer].correct ||
+                                  question.answers[numAnswer].isSelected))
                           ? Utility.textStyleAnswerViWhite
                           : Utility.textStyleAnswerVi,
                     ),

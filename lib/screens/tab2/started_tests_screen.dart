@@ -1,10 +1,14 @@
+import 'dart:async';
+
 import 'package:driving_theory/extension/colors_extension.dart';
 import 'package:driving_theory/extension/utility.dart';
 import 'package:driving_theory/models/topic_object.dart';
 import 'package:driving_theory/screens/tab2/review_mock_test_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:driving_theory/screens/tab1/review_question_screen.dart';
+import 'package:flutter_countdown_timer/countdown_timer_controller.dart';
+import 'package:flutter_countdown_timer/current_remaining_time.dart';
+import 'package:flutter_countdown_timer/flutter_countdown_timer.dart';
 
 class StartedTestsScreen extends StatefulWidget {
   List<ListQuestion> questions = <ListQuestion>[];
@@ -18,20 +22,30 @@ class StartedTestsScreen extends StatefulWidget {
 }
 
 class _StartedTestsState extends State<StartedTestsScreen> {
+  late CountdownTimerController controller;
+  int endTime = DateTime.now().millisecondsSinceEpoch +
+      Duration(seconds: 3420).inMilliseconds;
+
   @override
   void initState() {
     super.initState();
+    controller = CountdownTimerController(endTime: endTime, onEnd: onEnd);
   }
 
-  PageController pageController = PageController(
-    initialPage: 0,
-    keepPage: true,
-  );
-
-  PageController pageController2 = PageController(
-    initialPage: 0,
-    keepPage: true,
-  );
+  void onEnd() {
+    print('onEnd');
+    controller.disposeTimer();
+    DataTopic datas = new DataTopic('title');
+    datas.data = <Data>[];
+    for (ListQuestion item in widget.questions) {
+      item.isSelected = true;
+    }
+    Data data = new Data('Result', widget.questions);
+    datas.data.add(data);
+    var screen = ReviewMockTestScreen(datas, 0, _onTapButton);
+    Navigator.of(context).push(MaterialPageRoute(
+        settings: RouteSettings(name: "/Page2"), builder: (context) => screen));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -68,20 +82,22 @@ class _StartedTestsState extends State<StartedTestsScreen> {
                   .values
                   .toList(),
             ),
-            title: Text('Mock tests'),
+            title: CountdownTimer(
+              widgetBuilder: (context, currentTime) {
+                return Text(dateTimeColdown(currentTime!));
+              },
+              textStyle: TextStyle(
+                fontSize: 20,
+                color: Colors.white,
+              ),
+              onEnd: onEnd,
+              endTime: endTime,
+            ),
             actions: <Widget>[
               FlatButton(
                 textColor: Colors.white,
                 onPressed: () {
-                  DataTopic datas = new DataTopic('title');
-                  datas.data = <Data>[];
-                  for(ListQuestion item in widget.questions) {
-                    item.isSelected = true;
-                  }
-                  Data data = new Data('topic', widget.questions);
-                  datas.data.add(data);
-                  gotoReviewScreen(datas, 0);
-
+                  onEnd();
                 },
                 child: Text(
                   'Finish',
@@ -105,13 +121,31 @@ class _StartedTestsState extends State<StartedTestsScreen> {
     );
   }
 
-  void gotoReviewScreen(DataTopic data, int index) {
-    var screen = ReviewMockTestScreen(data, index, _onTapButton);
-    Navigator.of(context).push(MaterialPageRoute(settings: RouteSettings(name: "/Page2"),builder: (context) => screen));
+  String dateTimeColdown(CurrentRemainingTime currentRemainingTime) {
+    String time = '';
+    if (currentRemainingTime.min != null) {
+      if (currentRemainingTime.min! < 10) {
+        time = '0' + currentRemainingTime.min.toString();
+      }else {
+        time = currentRemainingTime.min.toString();
+      }
+    }else {
+      time += '00';
+    }
+
+    if (currentRemainingTime.sec != null) {
+      if (currentRemainingTime.sec! < 10) {
+        time += ':0' + currentRemainingTime.sec.toString();
+      }else {
+        time += ':' +currentRemainingTime.sec.toString();
+      }
+    }
+
+
+    return time;
   }
 
-  _onTapButton() {
-  }
+  _onTapButton() {}
 
   Widget buildItemReview(int index) {
     ListQuestion question = widget.questions[index];
@@ -220,5 +254,11 @@ class _StartedTestsState extends State<StartedTestsScreen> {
 
   Future<bool> _onBackPressed() async {
     return true;
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
   }
 }
