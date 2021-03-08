@@ -17,9 +17,6 @@ class ReviewQuestionScreen extends StatefulWidget {
   State<StatefulWidget> createState() {
     return _ReviewQuestionState();
   }
-
-
-
 }
 
 class _ReviewQuestionState extends State<ReviewQuestionScreen> {
@@ -29,12 +26,14 @@ class _ReviewQuestionState extends State<ReviewQuestionScreen> {
       onWillPop: _onBackPressed,
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: HexColor.mainColor(),
           title: Text(widget.dataTopic.data[widget.index].topic),
           actions: <Widget>[
             FlatButton(
               textColor: Colors.white,
               onPressed: () {
-                for (ListQuestion item in widget.dataTopic.data[widget.index].listQuestion) {
+                for (ListQuestion item
+                    in widget.dataTopic.data[widget.index].listQuestion) {
                   item.isSelected = false;
                   for (Answers answer in item.answers) {
                     answer.isSelected = false;
@@ -54,7 +53,8 @@ class _ReviewQuestionState extends State<ReviewQuestionScreen> {
           ],
         ),
         body: Container(
-          child: (numberTotal() > 0 ? getColumnPercent() : getColumnNonePercent()),
+          child:
+              (numberTotal() > 0 ? getColumnPercent() : getColumnNonePercent()),
         ),
       ),
     );
@@ -65,12 +65,11 @@ class _ReviewQuestionState extends State<ReviewQuestionScreen> {
     return true;
   }
 
-  Column getColumnNonePercent () {
+  Column getColumnNonePercent() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Expanded(
-          flex: 16,
           child: Container(
               width: MediaQuery.of(context).size.width,
               color: Colors.white,
@@ -78,82 +77,80 @@ class _ReviewQuestionState extends State<ReviewQuestionScreen> {
                 itemBuilder: (BuildContext context, int index) {
                   return buildItemReview(index);
                 },
-                itemCount: widget.dataTopic.data[widget.index].listQuestion.length,
+                itemCount:
+                    widget.dataTopic.data[widget.index].listQuestion.length,
               )),
         ),
       ],
     );
   }
-  Column getColumnPercent () {
+
+  Column getColumnPercent() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Expanded(
-          flex: 1,
-          child: Container(
-            child: Row(
-              children: [
-                Expanded(
-                    child: Center(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Container(
-                            margin: EdgeInsets.only(left: 8),
-                            child: CircularPercentIndicator(
-                              radius: 40.0,
-                              lineWidth: 3.0,
-                              percent: numberCorrect() * 0.01,
-                              progressColor: Colors.green,
-                              center: new Text(numberCorrect().toString() + '%',
-                                  style: TextStyle(
-                                      color: Colors.green,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 12)),
-                            ),
-                          ),
-                          Container(
-                              margin: EdgeInsets.only(left: 10),
-                              child: Text('Correct'))
-                        ],
+        Container(
+          child: Row(
+            children: [
+              Container(
+                width: MediaQuery.of(context).size.width / 2,
+                height: 50,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    CircularPercentIndicator(
+                      radius: 40.0,
+                      lineWidth: 3.0,
+                      percent: numberTotal() * 0.01,
+                      progressColor: HexColor.mainColor(),
+                      center: new Text(numberTotal().toString() + '%',
+                          style: TextStyle(
+                              color: HexColor.mainColor(),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 12)),
+                    ),
+                    Container(
+                        margin: EdgeInsets.only(left: 10), child: Text('Total'))
+                  ],
+                ),
+              ),
+              Container(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Container(
+                      margin: EdgeInsets.only(left: 8),
+                      child: CircularPercentIndicator(
+                        radius: 40.0,
+                        lineWidth: 3.0,
+                        percent: numberCorrect() * 0.01,
+                        progressColor: Colors.green,
+                        center: new Text(numberCorrect().toString() + '%',
+                            style: TextStyle(
+                                color: Colors.green,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 12)),
                       ),
-                    )),
-                Expanded(
-                    child: Center(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          CircularPercentIndicator(
-                            radius: 40.0,
-                            lineWidth: 3.0,
-                            percent: numberTotal() * 0.01,
-                            progressColor: HexColor.mainColor(),
-                            center: new Text(numberTotal().toString() + '%',
-                                style: TextStyle(
-                                    color: HexColor.mainColor(),
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 12)),
-                          ),
-                          Container(
-                              margin: EdgeInsets.only(left: 10),
-                              child: Text('Total'))
-                        ],
-                      ),
-                    )),
-              ],
-            ),
+                    ),
+                    Container(
+                        margin: EdgeInsets.only(left: 10),
+                        child: Text('Correct'))
+                  ],
+                ),
+              ),
+            ],
           ),
         ),
         Expanded(
-          flex: 16,
+          flex: 10,
           child: Container(
-              width: MediaQuery.of(context).size.width,
               color: Colors.white,
               child: ListView.builder(
                 itemBuilder: (BuildContext context, int index) {
                   return buildItemReview(index);
                 },
-                itemCount: widget.dataTopic.data[widget.index].listQuestion.length,
+                itemCount:
+                    widget.dataTopic.data[widget.index].listQuestion.length,
               )),
         ),
       ],
@@ -162,13 +159,16 @@ class _ReviewQuestionState extends State<ReviewQuestionScreen> {
 
   int numberTotal() {
     int number = 0;
-    for (ListQuestion item in widget.dataTopic.data[widget.index].listQuestion) {
+    for (ListQuestion item
+        in widget.dataTopic.data[widget.index].listQuestion) {
       if (item.isSelected) {
         number += 1;
       }
     }
-    double percent =
-        (number.toDouble() / widget.dataTopic.data[widget.index].listQuestion.length.toDouble()) * 100;
+    double percent = (number.toDouble() /
+            widget.dataTopic.data[widget.index].listQuestion.length
+                .toDouble()) *
+        100;
     percent.round();
     return percent.round();
   }
@@ -176,7 +176,8 @@ class _ReviewQuestionState extends State<ReviewQuestionScreen> {
   int numberCorrect() {
     int numberSelected = 0;
     int numberCountCorrect = 0;
-    for (ListQuestion item in widget.dataTopic.data[widget.index].listQuestion) {
+    for (ListQuestion item
+        in widget.dataTopic.data[widget.index].listQuestion) {
       int count = 0;
       if (item.isSelected) {
         numberSelected += 1;
@@ -193,41 +194,33 @@ class _ReviewQuestionState extends State<ReviewQuestionScreen> {
     if (numberSelected == 0) {
       return 0;
     }
-    double percent =
-        (numberCountCorrect.toDouble() / widget.dataTopic.data[widget.index].listQuestion.length) * 100;
+    double percent = (numberCountCorrect.toDouble() /
+            widget.dataTopic.data[widget.index].listQuestion.length) *
+        100;
     return percent.round();
   }
 
   Widget buildItemReview(int index) {
-    ListQuestion question = widget.dataTopic.data[widget.index].listQuestion[index];
+    ListQuestion question =
+        widget.dataTopic.data[widget.index].listQuestion[index];
     return Container(
-      child: Card(
-        color: Colors.white,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            ListTile(
-              contentPadding:
-                  EdgeInsets.symmetric(horizontal: 8.0, vertical: 0.0),
-              title: Text(
-                (index + 1).toString() + '. ' + question.questionEn,
-                style: Utility.textStyleQuestionEn,
+      child: Container(
+          color: Colors.white,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              rowInQuestion(question, index),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  getItemAnswer(question, 0),
+                  getItemAnswer(question, 1),
+                  getItemAnswer(question, 2),
+                  getItemAnswer(question, 3),
+                ],
               ),
-              subtitle: Text(
-                question.questionVi,
-                style: Utility.textStyleQuestionVi,
-              ),
-            ),
-            getItemAnswer(question, 0),
-            getItemAnswer(question, 1),
-            getItemAnswer(question, 2),
-            getItemAnswer(question, 3),
-          ],
-        ),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8.0),
-        ),
-      ),
+            ],
+          )),
       decoration: new BoxDecoration(
         boxShadow: [
           new BoxShadow(
@@ -239,21 +232,73 @@ class _ReviewQuestionState extends State<ReviewQuestionScreen> {
     );
   }
 
+  Row rowInQuestion(ListQuestion question, int index) {
+    if (question.questionCode == null || question.questionCode!.isEmpty) {
+      return Row(children: [
+        Expanded(
+          flex: 1,
+          child: Container(
+            child: ListTile(
+              contentPadding:
+              EdgeInsets.symmetric(horizontal: 8.0, vertical: 0.0),
+              title: Text(
+                (index + 1).toString() + '. ' + question.questionEn,
+                style: Utility.textStyleQuestionEn,
+              ),
+              subtitle: Text(
+                question.questionVi,
+                style: Utility.textStyleQuestionVi,
+              ),
+            ),
+          ),
+        ),
+      ]);
+    }else {
+      return Row(children: [
+        Expanded(
+          child: Container(
+            child: ListTile(
+              contentPadding:
+              EdgeInsets.symmetric(horizontal: 8.0, vertical: 0.0),
+              title: Text(
+                (index + 1).toString() + '. ' + question.questionEn,
+                style: Utility.textStyleQuestionEn,
+              ),
+              subtitle: Text(
+                question.questionVi,
+                style: Utility.textStyleQuestionVi,
+              ),
+            ),
+          ),
+          flex: 3,
+        ),
+        Expanded(child: Container(
+          margin: EdgeInsets.only(right: 8.0, top: 8, bottom: 8),
+          child: Image(
+              image: AssetImage('images/imagecontent/' + question.questionCode!),
+              fit: BoxFit.cover),
+        ), flex: 2)
+      ]);
+    }
+
+  }
+
   Widget getItemAnswer(ListQuestion question, int numAnswer) {
-    return GestureDetector(
-      onTap: () {
-        if (!question.isSelected) {
-          question.answers[numAnswer].isSelected = true;
-          setState(() {
-            question.isSelected = true;
-            widget.dataTopic.title = '';
-            Utility.saveDataByName(widget.dataTopic);
-          });
-        }
-      }   ,
-      child: Container(
-        margin: EdgeInsets.only(left: 5, right: 5),
-        child: Expanded(
+
+    if (question.answers[numAnswer].answerCode == null || question.answers[numAnswer].answerCode.isEmpty) {
+      return GestureDetector(
+        onTap: () {
+          if (!question.isSelected) {
+            question.answers[numAnswer].isSelected = true;
+            setState(() {
+              question.isSelected = true;
+              widget.dataTopic.title = '';
+              Utility.saveDataByName(widget.dataTopic);
+            });
+          }
+        },
+        child: Container(
+          margin: EdgeInsets.only(left: 5, right: 5),
           child: Card(
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10.0),
@@ -263,40 +308,38 @@ class _ReviewQuestionState extends State<ReviewQuestionScreen> {
             color: Utility.getColorInSelect(question, numAnswer),
             child: Row(
               children: [
-                Expanded(
-                  child: Center(
-                      child: Container(
-                    width: 30,
-                    height: 30,
-                    child: Center(
-                        child: Text(
-                      Utility.getTitleAnswer(numAnswer),
-                      style: Utility.textStyleTitleAnswer,
+                Center(
+                    child: Container(
+                      width: 30,
+                      margin: EdgeInsets.only(left: 10),
+                      height: 30,
+                      child: Center(
+                          child: Text(
+                            Utility.getTitleAnswer(numAnswer),
+                            style: Utility.textStyleTitleAnswer,
+                          )),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          color: Colors.blue),
                     )),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        color: HexColor.mainColor()),
-                  )),
-                  flex: 2,
-                ),
-                Expanded(
-                  flex: 15,
+                SizedBox(
+                  width: MediaQuery.of(context).size.width - 50,
                   child: ListTile(
                     contentPadding:
-                        EdgeInsets.symmetric(horizontal: 8.0, vertical: 5.0),
+                    EdgeInsets.symmetric(horizontal: 8.0, vertical: 5.0),
                     title: Text(
                       question.answers[numAnswer].answerEn,
                       style: (question.isSelected &&
-                              (question.answers[numAnswer].correct ||
-                                  question.answers[numAnswer].isSelected))
+                          (question.answers[numAnswer].correct ||
+                              question.answers[numAnswer].isSelected))
                           ? Utility.textStyleAnswerEnWhite
                           : Utility.textStyleAnswerEn,
                     ),
                     subtitle: Text(
                       question.answers[numAnswer].answerVi,
                       style: (question.isSelected &&
-                              (question.answers[numAnswer].correct ||
-                                  question.answers[numAnswer].isSelected))
+                          (question.answers[numAnswer].correct ||
+                              question.answers[numAnswer].isSelected))
                           ? Utility.textStyleAnswerViWhite
                           : Utility.textStyleAnswerVi,
                     ),
@@ -307,7 +350,80 @@ class _ReviewQuestionState extends State<ReviewQuestionScreen> {
             margin: EdgeInsets.only(bottom: 10),
           ),
         ),
-      ),
-    );
+      );
+    } else {
+      return GestureDetector(
+        onTap: () {
+          if (!question.isSelected) {
+            question.answers[numAnswer].isSelected = true;
+            setState(() {
+              question.isSelected = true;
+              widget.dataTopic.title = '';
+              Utility.saveDataByName(widget.dataTopic);
+            });
+          }
+        },
+        child: Container(
+          margin: EdgeInsets.only(left: 5, right: 5),
+          child: Card(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.0),
+                side: BorderSide(
+                    color: Utility.getColorInSelectBorder(
+                        question, numAnswer, true))),
+            color: Utility.getColorInSelect(question, numAnswer),
+            child: Row(
+              children: [
+                Center(
+                    child: Container(
+                      width: 30,
+                      margin: EdgeInsets.only(left: 10),
+                      height: 30,
+                      child: Center(
+                          child: Text(
+                            Utility.getTitleAnswer(numAnswer),
+                            style: Utility.textStyleTitleAnswer,
+                          )),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          color: HexColor.mainColor()),
+                    )),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width - 150,
+                  height: 100,
+                  child: ListTile(
+                    contentPadding:
+                    EdgeInsets.symmetric(horizontal: 8.0, vertical: 5.0),
+                    title: Text(
+                      question.answers[numAnswer].answerEn,
+                      style: (question.isSelected &&
+                          (question.answers[numAnswer].correct ||
+                              question.answers[numAnswer].isSelected))
+                          ? Utility.textStyleAnswerEnWhite
+                          : Utility.textStyleAnswerEn,
+                    ),
+                    subtitle: Text(
+                      question.answers[numAnswer].answerVi,
+                      style: (question.isSelected &&
+                          (question.answers[numAnswer].correct ||
+                              question.answers[numAnswer].isSelected))
+                          ? Utility.textStyleAnswerViWhite
+                          : Utility.textStyleAnswerVi,
+                    ),
+                  ),
+                ),
+                Expanded(child: Container(
+                  margin: EdgeInsets.only(right: 8.0, top: 8, bottom: 8),
+                  child: Image(
+                      image: AssetImage('images/imagecontent/' + question.answers[numAnswer].answerCode),
+                      fit: BoxFit.cover),
+                ), flex: 2)
+              ],
+            ),
+            margin: EdgeInsets.only(bottom: 10),
+          ),
+        ),
+      );
+    }
   }
 }

@@ -21,7 +21,7 @@ extension HexColor on Color {
   }
 
   static Color mainColor() {
-    return HexColor.hexToColor('#00AFF0');
+    return HexColor.hexToColor('#6e937c');
   }
 
   static Color mainSelectedColor() {
@@ -45,7 +45,7 @@ extension HexColor on Color {
   }
 
   static Color colorAnswerCorrect() {
-    return HexColor.hexToColor('#658B6F');
+    return HexColor.mainColor();
   }
 
   static Color colorAnswerSelected() {
@@ -54,6 +54,14 @@ extension HexColor on Color {
 
   static Color colorAnswerFail() {
     return HexColor.hexToColor('#a02515');
+  }
+
+  static Color colorBackGround() {
+    return HexColor.hexToColor('#bebebe');
+  }
+
+  static Color colorBackGroundResult() {
+    return HexColor.hexToColor('#9f2e4b');
   }
 
   static getMultipleColorFromIndex(int index) {

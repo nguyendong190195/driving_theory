@@ -30,7 +30,6 @@ dependencies:
   cupertino_icons: ^1.0.0
   shared_preferences: ^2.0.3
   flutter_countdown_timer: ^4.0.0
-#  launch_review: ^1.0.1
 #  flutter_email_sender: ^4.0.0
 #  percent_indicator: "^2.1.7+2"
 
@@ -50,9 +49,13 @@ flutter:
   uses-material-design: true
   # To add assets to your application, add an assets section, like this:
   assets:
-     - images/logo_app_2.jpg
-     - images/logo_app_2.png
-     - data/data.json
+    - images/background_result.jpeg
+    - images/logo_app_2.jpg
+    - images/logo_app_2.png
+    - images/ic_logo_app.png
+    - images/image_background_finish.jpeg
+    - data/data.json
+    - images/imagecontent/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

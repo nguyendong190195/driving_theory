@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:driving_theory/extension/colors_extension.dart';
 import 'package:driving_theory/extension/utility.dart';
 import 'package:driving_theory/models/topic_object.dart';
@@ -54,6 +53,7 @@ class _StartedTestsState extends State<StartedTestsScreen> {
         length: widget.questions.length,
         child: Scaffold(
           appBar: AppBar(
+            backgroundColor: HexColor.mainColor(),
             centerTitle: true,
             automaticallyImplyLeading: true,
             leading: IconButton(
@@ -97,7 +97,27 @@ class _StartedTestsState extends State<StartedTestsScreen> {
               FlatButton(
                 textColor: Colors.white,
                 onPressed: () {
-                  onEnd();
+                  showDialog(
+                      context: context,
+                      builder: (context) => AlertDialog(
+                            title: Text("Are you sure you want to quit?"),
+                            content: Text(
+                                "All progress in this session will be lost"),
+                            actions: [
+                              FlatButton(
+                                  onPressed: () {
+                                    Navigator.of(context, rootNavigator: true)
+                                        .pop();
+                                  },
+                                  child: Text('Cancel')),
+                              FlatButton(
+                                  onPressed: () {
+                                    onEnd();
+                                  },
+                                  child: Text('OK')),
+                            ],
+                          ));
+                  // onEnd();
                 },
                 child: Text(
                   'Finish',
@@ -126,21 +146,20 @@ class _StartedTestsState extends State<StartedTestsScreen> {
     if (currentRemainingTime.min != null) {
       if (currentRemainingTime.min! < 10) {
         time = '0' + currentRemainingTime.min.toString();
-      }else {
+      } else {
         time = currentRemainingTime.min.toString();
       }
-    }else {
+    } else {
       time += '00';
     }
 
     if (currentRemainingTime.sec != null) {
       if (currentRemainingTime.sec! < 10) {
         time += ':0' + currentRemainingTime.sec.toString();
-      }else {
-        time += ':' +currentRemainingTime.sec.toString();
+      } else {
+        time += ':' + currentRemainingTime.sec.toString();
       }
     }
-
 
     return time;
   }
@@ -149,79 +168,122 @@ class _StartedTestsState extends State<StartedTestsScreen> {
 
   Widget buildItemReview(int index) {
     ListQuestion question = widget.questions[index];
-    return SingleChildScrollView(
-      child: Container(
-        child: Card(
-          color: Colors.white,
+    if (question.questionCode == null || question.questionCode!.isEmpty) {
+      return SingleChildScrollView(
+        child: Container(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              ListTile(
-                contentPadding:
-                    EdgeInsets.symmetric(horizontal: 8.0, vertical: 0.0),
-                title: Text(
-                  (index + 1).toString() + '. ' + question.questionEn,
-                  style: Utility.textStyleQuestionEn,
-                ),
-                subtitle: Text(
-                  question.questionVi,
-                  style: Utility.textStyleQuestionVi,
+              Container(
+                child: ListTile(
+                  contentPadding:
+                      EdgeInsets.symmetric(horizontal: 8.0, vertical: 0.0),
+                  title: Text(
+                    (index + 1).toString() + '. ' + question.questionEn,
+                    style: Utility.textStyleQuestionEn,
+                  ),
                 ),
               ),
-              getItemAnswer(question, 0),
-              getItemAnswer(question, 1),
-              getItemAnswer(question, 2),
-              getItemAnswer(question, 3),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  getItemAnswer(question, 0),
+                  getItemAnswer(question, 1),
+                  getItemAnswer(question, 2),
+                  getItemAnswer(question, 3),
+                ],
+              ),
             ],
           ),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(0.0),
+        ),
+      );
+    } else {
+      return SingleChildScrollView(
+        child: Container(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(children: [
+                Expanded(
+                  flex: 3,
+                  child: Container(
+                    child: ListTile(
+                      contentPadding:
+                          EdgeInsets.symmetric(horizontal: 8.0, vertical: 0.0),
+                      title: Text(
+                        (index + 1).toString() + '. ' + question.questionEn,
+                        style: Utility.textStyleQuestionEn,
+                      ),
+                    ),
+                  ),
+                ),
+                Expanded(
+                    child: Container(
+                      margin: EdgeInsets.only(right: 8.0, top: 8, bottom: 8),
+                      child: Image(
+                          image: AssetImage(
+                              'images/imagecontent/' + question.questionCode!),
+                          fit: BoxFit.cover),
+                    ),
+                    flex: 2)
+              ]),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  getItemAnswer(question, 0),
+                  getItemAnswer(question, 1),
+                  getItemAnswer(question, 2),
+                  getItemAnswer(question, 3),
+                ],
+              ),
+            ],
           ),
         ),
-      ),
-    );
+      );
+    }
   }
 
   Widget getItemAnswer(ListQuestion question, int numAnswer) {
-    return GestureDetector(
-      onTap: () {
-        if (!question.isSelected) {
+    if (question.answers[numAnswer].answerCode == null ||
+        question.answers[numAnswer].answerCode.isEmpty) {
+      return GestureDetector(
+        onTap: () {
+          for (Answers item in question.answers) {
+            item.isSelected = false;
+          }
           question.answers[numAnswer].isSelected = true;
-          setState(() {
-            question.isSelected = true;
-          });
-        }
-      },
-      child: Container(
-        margin: EdgeInsets.only(left: 5, right: 5),
-        child: Expanded(
+          setState(() {});
+        },
+        child: Container(
+          margin: EdgeInsets.only(left: 5, right: 5),
           child: Card(
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10.0),
                 side: BorderSide(
-                    color: Utility.getColorInSelectBorder(
-                        question, numAnswer, true))),
-            color: Utility.getColorInSelect(question, numAnswer),
+                    color: question.answers[numAnswer].isSelected
+                        ? HexColor.colorAnswerCorrect()
+                        : HexColor.colorAnswerNormal())),
+              color: question.answers[numAnswer].isSelected
+                  ? HexColor.colorAnswerCorrect()
+                  : HexColor.colorAnswerNormal(),
             child: Row(
               children: [
-                Expanded(
+                Center(
+                    child: Container(
+                  width: 30,
+                  margin: EdgeInsets.only(left: 10),
+                  height: 30,
                   child: Center(
-                      child: Container(
-                    width: 30,
-                    height: 30,
-                    child: Center(
-                        child: Text(
-                      Utility.getTitleAnswer(numAnswer),
-                      style: Utility.textStyleTitleAnswer,
-                    )),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        color: HexColor.mainColor()),
+                      child: Text(
+                    Utility.getTitleAnswer(numAnswer),
+                    style: Utility.textStyleTitleAnswer,
                   )),
-                  flex: 2,
-                ),
-                Expanded(
-                  flex: 15,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      color: Colors.blue),
+                )),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width - 50,
                   child: ListTile(
                     contentPadding:
                         EdgeInsets.symmetric(horizontal: 8.0, vertical: 5.0),
@@ -233,14 +295,6 @@ class _StartedTestsState extends State<StartedTestsScreen> {
                           ? Utility.textStyleAnswerEnWhite
                           : Utility.textStyleAnswerEn,
                     ),
-                    subtitle: Text(
-                      question.answers[numAnswer].answerVi,
-                      style: (question.isSelected &&
-                              (question.answers[numAnswer].correct ||
-                                  question.answers[numAnswer].isSelected))
-                          ? Utility.textStyleAnswerViWhite
-                          : Utility.textStyleAnswerVi,
-                    ),
                   ),
                 )
               ],
@@ -248,8 +302,74 @@ class _StartedTestsState extends State<StartedTestsScreen> {
             margin: EdgeInsets.only(bottom: 10),
           ),
         ),
-      ),
-    );
+      );
+    } else {
+      return GestureDetector(
+        onTap: () {
+          question.isSelected = true;
+          for (Answers item in question.answers) {
+            item.isSelected = false;
+          }
+          question.answers[numAnswer].isSelected = true;
+          setState(() {});
+        },
+        child: Container(
+          margin: EdgeInsets.only(left: 5, right: 5),
+          child: Card(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.0),
+                side: BorderSide(
+                    color: Utility.getColorInSelectBorder(
+                        question, numAnswer, true))),
+            color: Utility.getColorInSelect(question, numAnswer),
+            child: Row(
+              children: [
+                Center(
+                    child: Container(
+                  width: 30,
+                  margin: EdgeInsets.only(left: 10),
+                  height: 30,
+                  child: Center(
+                      child: Text(
+                    Utility.getTitleAnswer(numAnswer),
+                    style: Utility.textStyleTitleAnswer,
+                  )),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      color: Colors.blue),
+                )),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width - 150,
+                  height: 100,
+                  child: ListTile(
+                    contentPadding:
+                        EdgeInsets.symmetric(horizontal: 8.0, vertical: 5.0),
+                    title: Text(
+                      question.answers[numAnswer].answerEn,
+                      style: (question.isSelected &&
+                              (question.answers[numAnswer].correct ||
+                                  question.answers[numAnswer].isSelected))
+                          ? Utility.textStyleAnswerEnWhite
+                          : Utility.textStyleAnswerEn,
+                    ),
+                  ),
+                ),
+                Expanded(
+                    child: Container(
+                      margin: EdgeInsets.only(right: 8.0, top: 8, bottom: 8),
+                      child: Image(
+                          image: AssetImage('images/imagecontent/' +
+                              question.answers[numAnswer].answerCode),
+                          fit: BoxFit.cover),
+                    ),
+                    flex: 2)
+              ],
+            ),
+            margin: EdgeInsets.only(bottom: 10),
+          ),
+        ),
+      );
+    }
   }
 
   Future<bool> _onBackPressed() async {

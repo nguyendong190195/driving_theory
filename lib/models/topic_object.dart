@@ -103,7 +103,7 @@ class ListQuestion {
   ListQuestion.fromJson(Map<String, dynamic> json) {
     questionEn = json['question_en'];
     questionVi = json['question_vi'];
-    questionCode = json['questionCode'];
+    questionCode = json['question_code'];
 
     if (json['isSelected'] != null) isSelected = json['isSelected'];
     if (json['answers'] != null) {

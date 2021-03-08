@@ -75,6 +75,36 @@ class Utility {
      return HexColor.colorAnswerNormal();
    }
 
+   static Color getColorInSelectBackgroundTitle (ListQuestion question, int numAnswer) {
+     if (!question.isSelected) {
+       return HexColor.mainColor();
+     }else {
+       if (question.answers[numAnswer].isSelected && question.answers[numAnswer].correct) {
+         return Colors.white;
+       }else if (question.answers[numAnswer].isSelected) {
+         return Colors.white;
+       }else if (question.answers[numAnswer].correct) {
+         return Colors.white;
+       }
+     }
+     return HexColor.mainColor();
+   }
+
+   static Color getColorInSelectTitle (ListQuestion question, int numAnswer) {
+     if (!question.isSelected) {
+       return Colors.white;
+     }else {
+       if (question.answers[numAnswer].isSelected && question.answers[numAnswer].correct) {
+         return HexColor.mainColor();
+       }else if (question.answers[numAnswer].isSelected) {
+         return HexColor.mainColor();
+       }else if (question.answers[numAnswer].correct) {
+         return HexColor.mainColor();
+       }
+     }
+     return Colors.white;
+   }
+
    static Color getColorInSelectBorder (ListQuestion question, int numAnswer, bool isBorder) {
      if (!question.isSelected) {
          return HexColor.mainColor();
@@ -160,4 +190,14 @@ class Utility {
    }
 
 
+
+}
+
+extension StringExtension on String {
+  bool isNullOrEmpty() {
+    if (this!= null && !this.isEmpty) {
+      return false;
+    }
+    return true;
+  }
 }

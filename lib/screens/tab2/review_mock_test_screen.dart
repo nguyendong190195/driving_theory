@@ -27,6 +27,7 @@ class _ReviewMockTestState extends State<ReviewMockTestScreen> {
       child: Scaffold(
         appBar: AppBar(
           title: Text(widget.dataTopic.data[widget.index].topic),
+          backgroundColor: HexColor.mainColor(),
         ),
         body: Container(
           child: getColumnPercent(),
@@ -40,33 +41,22 @@ class _ReviewMockTestState extends State<ReviewMockTestScreen> {
     return true;
   }
 
-  Column getColumnNonePercent() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Expanded(
-          flex: 16,
-          child: Container(
-              width: MediaQuery.of(context).size.width,
-              color: Colors.white,
-              child: ListView.builder(
-                itemBuilder: (BuildContext context, int index) {
-                  return buildItemReview(index);
-                },
-                itemCount:
-                    widget.dataTopic.data[widget.index].listQuestion.length,
-              )),
-        ),
-      ],
-    );
-  }
-
   Column getColumnPercent() {
+    var assetsImage = new AssetImage(
+        'images/background_result.jpeg');
+    var image = new Image(
+        image: assetsImage,
+        fit: BoxFit.cover);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
-          color: Colors.orange,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: assetsImage,
+              fit: BoxFit.fill,
+            ),
+          ),
           child: Column(
             children: [
               Padding(
@@ -179,31 +169,35 @@ class _ReviewMockTestState extends State<ReviewMockTestScreen> {
     ListQuestion question =
         widget.dataTopic.data[widget.index].listQuestion[index];
     return Container(
-      child: Card(
+      child: Container(
         color: Colors.white,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ListTile(
-              contentPadding:
-                  EdgeInsets.symmetric(horizontal: 8.0, vertical: 0.0),
-              title: Text(
-                (index + 1).toString() + '. ' + question.questionEn,
-                style: Utility.textStyleQuestionEn,
-              ),
-              subtitle: Text(
-                question.questionVi,
-                style: Utility.textStyleQuestionVi,
+            Container(
+              child: ListTile(
+                contentPadding:
+                    EdgeInsets.symmetric(horizontal: 8.0, vertical: 0.0),
+                title: Text(
+                  (index + 1).toString() + '. ' + question.questionEn,
+                  style: Utility.textStyleQuestionEn,
+                ),
+                subtitle: Text(
+                  question.questionVi,
+                  style: Utility.textStyleQuestionVi,
+                ),
               ),
             ),
-            getItemAnswer(question, 0),
-            getItemAnswer(question, 1),
-            getItemAnswer(question, 2),
-            getItemAnswer(question, 3),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                getItemAnswer(question, 0),
+                getItemAnswer(question, 1),
+                getItemAnswer(question, 2),
+                getItemAnswer(question, 3),
+              ],
+            ),
           ],
-        ),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8.0),
         ),
       ),
       decoration: new BoxDecoration(
@@ -217,6 +211,7 @@ class _ReviewMockTestState extends State<ReviewMockTestScreen> {
     );
   }
 
+
   Widget getItemAnswer(ListQuestion question, int numAnswer) {
     return GestureDetector(
       onTap: () {
@@ -224,64 +219,62 @@ class _ReviewMockTestState extends State<ReviewMockTestScreen> {
           question.answers[numAnswer].isSelected = true;
           setState(() {
             question.isSelected = true;
+            widget.dataTopic.title = '';
+            Utility.saveDataByName(widget.dataTopic);
           });
         }
-      },
+      }   ,
       child: Container(
         margin: EdgeInsets.only(left: 5, right: 5),
-        child: Expanded(
-          child: Card(
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0),
-                side: BorderSide(
-                    color: Utility.getColorInSelectBorder(
-                        question, numAnswer, true))),
-            color: Utility.getColorInSelect(question, numAnswer),
-            child: Row(
-              children: [
-                Expanded(
-                  child: Center(
-                      child: Container(
+        child: Card(
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10.0),
+              side: BorderSide(
+                  color: Utility.getColorInSelectBorder(
+                      question, numAnswer, true))),
+          color: Utility.getColorInSelect(question, numAnswer),
+          child: Row(
+            children: [
+              Center(
+                  child: Container(
                     width: 30,
+                    margin: EdgeInsets.only(left: 10),
                     height: 30,
                     child: Center(
                         child: Text(
-                      Utility.getTitleAnswer(numAnswer),
-                      style: Utility.textStyleTitleAnswer,
-                    )),
+                          Utility.getTitleAnswer(numAnswer),
+                          style: Utility.textStyleTitleAnswer,
+                        )),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15),
-                        color: HexColor.mainColor()),
+                        color: Colors.blue),
                   )),
-                  flex: 2,
-                ),
-                Expanded(
-                  flex: 15,
-                  child: ListTile(
-                    contentPadding:
-                        EdgeInsets.symmetric(horizontal: 8.0, vertical: 5.0),
-                    title: Text(
-                      question.answers[numAnswer].answerEn,
-                      style: (question.isSelected &&
-                              (question.answers[numAnswer].correct ||
-                                  question.answers[numAnswer].isSelected))
-                          ? Utility.textStyleAnswerEnWhite
-                          : Utility.textStyleAnswerEn,
-                    ),
-                    subtitle: Text(
-                      question.answers[numAnswer].answerVi,
-                      style: (question.isSelected &&
-                              (question.answers[numAnswer].correct ||
-                                  question.answers[numAnswer].isSelected))
-                          ? Utility.textStyleAnswerViWhite
-                          : Utility.textStyleAnswerVi,
-                    ),
+              SizedBox(
+                width: MediaQuery. of(context). size. width - 50,
+                child: ListTile(
+                  contentPadding:
+                  EdgeInsets.symmetric(horizontal: 8.0, vertical: 5.0),
+                  title: Text(
+                    question.answers[numAnswer].answerEn,
+                    style: (question.isSelected &&
+                        (question.answers[numAnswer].correct ||
+                            question.answers[numAnswer].isSelected))
+                        ? Utility.textStyleAnswerEnWhite
+                        : Utility.textStyleAnswerEn,
                   ),
-                )
-              ],
-            ),
-            margin: EdgeInsets.only(bottom: 10),
+                  subtitle: Text(
+                    question.answers[numAnswer].answerVi,
+                    style: (question.isSelected &&
+                        (question.answers[numAnswer].correct ||
+                            question.answers[numAnswer].isSelected))
+                        ? Utility.textStyleAnswerViWhite
+                        : Utility.textStyleAnswerVi,
+                  ),
+                ),
+              )
+            ],
           ),
+          margin: EdgeInsets.only(bottom: 10),
         ),
       ),
     );
