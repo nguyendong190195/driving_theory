@@ -18,36 +18,45 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Widget> _widgetOptions = <Widget>[];
     return MaterialApp(
-      title: _title,
-      home: FutureBuilder(
-        future: Utility.getDataByName(),
-        // future: DefaultAssetBundle.of(context).loadString('data/data.json'),
-        builder: (context, snapshot) {
-          _widgetOptions.clear();
-          DataTopic? dataCache;
-          if (snapshot.data != null) {
-            dataCache = snapshot.data as DataTopic;
-          }
-          return FutureBuilder(
-            future: DefaultAssetBundle.of(context).loadString('data/data.json'),
-            builder: (context1, snapshot1) {
-              var new_data = json.decode(snapshot1.data.toString());
-              DataTopic data = DataTopic('title');
-              if (new_data != null) {
-                data = DataTopic.fromJson(new_data);
-              }
-              if (data != null && new_data!= null && data.data != null) {
-                _widgetOptions.add(PracticeAllQuestionScreen(dataCache != null ? dataCache : data.clone()));
-                _widgetOptions.add(MockTestsScreen(data.clone()));
-                _widgetOptions.add(HelpAndSupportScreen());
-              }
+        title: _title,
+        home: FutureBuilder(
+          future: Utility.getDataCacheByTopicName(),
+          builder: (context, snapshot) {
+            Data? dataCacheSave;
+            if (snapshot.data != null) {
+              dataCacheSave = snapshot.data as Data;
+            }
+            return FutureBuilder(
+              future: Utility.getDataByName(),
+              builder: (context, snapshot) {
+                _widgetOptions.clear();
+                DataTopic? dataCache;
+                if (snapshot.data != null) {
+                  dataCache = snapshot.data as DataTopic;
+                }
+                return FutureBuilder(
+                  future: DefaultAssetBundle.of(context)
+                      .loadString('data/data.json'),
+                  builder: (context1, snapshot1) {
+                    var new_data = json.decode(snapshot1.data.toString());
+                    DataTopic data = DataTopic('title');
+                    if (new_data != null) {
+                      data = DataTopic.fromJson(new_data);
+                    }
+                    if (data != null && new_data != null && data.data != null) {
+                      _widgetOptions.add(PracticeAllQuestionScreen(
+                          dataCache != null ? dataCache : data.clone(), dataCacheSave));
+                      _widgetOptions.add(MockTestsScreen(data.clone()));
+                      _widgetOptions.add(HelpAndSupportScreen());
+                    }
 
-              return MyStatefulWidget(_widgetOptions);
-            },
-          );
-        },
-      ),
-    );
+                    return MyStatefulWidget(_widgetOptions);
+                  },
+                );
+              },
+            );
+          },
+        ));
   }
 }
 
@@ -81,7 +90,10 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(child: widget.widgets.length > 0 ? widget.widgets[_selectedIndex] : Container()),
+      body: Center(
+          child: widget.widgets.length > 0
+              ? widget.widgets[_selectedIndex]
+              : Container()),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(

@@ -135,12 +135,12 @@ class Utility {
 
    }
 
-   static Future<bool> saveDataByTopicName(String nameTopic, Data data) async {
+   static Future<bool> saveDataCacheByTopicName(Data data) async {
      try {
        SharedPreferences prefs= await SharedPreferences.getInstance();
 
        String dataStr = jsonEncode(data);
-       prefs.setString(nameTopic, dataStr);
+       prefs.setString('cacheData', dataStr);
        return true;
      } catch (e) {
        print(e);
@@ -148,10 +148,10 @@ class Utility {
      }
    }
 
-   static Future<Data?> getDataByTopicName(String nameTopic) async {
+   static Future<Data?> getDataCacheByTopicName() async {
      try {
        SharedPreferences prefs= await SharedPreferences.getInstance();
-       String? dataString =  prefs.getString(nameTopic);
+       String? dataString =  prefs.getString('cacheData');
        if (dataString != null) {
         Data data = Data.fromJson(jsonDecode(dataString));
         return data;

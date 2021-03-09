@@ -10,8 +10,8 @@ class ReviewQuestionScreen extends StatefulWidget {
   DataTopic dataTopic;
   int index;
   late final VoidCallback onTap;
-
-  ReviewQuestionScreen(this.dataTopic, this.index, this.onTap);
+  Data? listCacheSave;
+  ReviewQuestionScreen(this.dataTopic, this.index, this.onTap, this.listCacheSave);
 
   @override
   State<StatefulWidget> createState() {
@@ -98,16 +98,19 @@ class _ReviewQuestionState extends State<ReviewQuestionScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    CircularPercentIndicator(
-                      radius: 40.0,
-                      lineWidth: 3.0,
-                      percent: numberTotal() * 0.01,
-                      progressColor: HexColor.mainColor(),
-                      center: new Text(numberTotal().toString() + '%',
-                          style: TextStyle(
-                              color: HexColor.mainColor(),
-                              fontWeight: FontWeight.bold,
-                              fontSize: 12)),
+                    Container(
+                      child: CircularPercentIndicator(
+                        radius: 40.0,
+                        lineWidth: 3.0,
+                        percent: numberTotal() * 0.01,
+                        progressColor: HexColor.mainColor(),
+                        center: new Text(numberTotal().toString() + '%',
+                            style: TextStyle(
+                                color: HexColor.mainColor(),
+                                fontWeight: FontWeight.bold,
+                                fontSize: 12)),
+                      ),
+                      margin: EdgeInsets.only(left: 10),
                     ),
                     Container(
                         margin: EdgeInsets.only(left: 10), child: Text('Total'))
@@ -134,7 +137,7 @@ class _ReviewQuestionState extends State<ReviewQuestionScreen> {
                     ),
                     Container(
                         margin: EdgeInsets.only(left: 10),
-                        child: Text('Correct'))
+                        child: Text('Corrects'))
                   ],
                 ),
               ),
@@ -234,58 +237,157 @@ class _ReviewQuestionState extends State<ReviewQuestionScreen> {
 
   Row rowInQuestion(ListQuestion question, int index) {
     if (question.questionCode == null || question.questionCode!.isEmpty) {
-      return Row(children: [
-        Expanded(
-          flex: 1,
-          child: Container(
-            child: ListTile(
-              contentPadding:
-              EdgeInsets.symmetric(horizontal: 8.0, vertical: 0.0),
-              title: Text(
-                (index + 1).toString() + '. ' + question.questionEn,
-                style: Utility.textStyleQuestionEn,
-              ),
-              subtitle: Text(
-                question.questionVi,
-                style: Utility.textStyleQuestionVi,
-              ),
-            ),
-          ),
-        ),
-      ]);
-    }else {
-      return Row(children: [
-        Expanded(
-          child: Container(
-            child: ListTile(
-              contentPadding:
-              EdgeInsets.symmetric(horizontal: 8.0, vertical: 0.0),
-              title: Text(
-                (index + 1).toString() + '. ' + question.questionEn,
-                style: Utility.textStyleQuestionEn,
-              ),
-              subtitle: Text(
-                question.questionVi,
-                style: Utility.textStyleQuestionVi,
+      if(widget.listCacheSave != null && widget.listCacheSave!.listQuestion.contains(question)) {
+        return Row(children: [
+          Expanded(
+            flex: 6,
+            child: Container(
+              child: ListTile(
+                contentPadding:
+                EdgeInsets.symmetric(horizontal: 8.0, vertical: 0.0),
+                title: Text(
+                  (index + 1).toString() + '. ' + question.questionEn,
+                  style: Utility.textStyleQuestionEn,
+                ),
+                subtitle: Text(
+                  question.questionVi,
+                  style: Utility.textStyleQuestionVi,
+                ),
               ),
             ),
           ),
-          flex: 3,
-        ),
-        Expanded(child: Container(
-          margin: EdgeInsets.only(right: 8.0, top: 8, bottom: 8),
-          child: Image(
-              image: AssetImage('images/imagecontent/' + question.questionCode!),
-              fit: BoxFit.cover),
-        ), flex: 2)
-      ]);
-    }
+        ]);
+      }else {
+        return Row(children: [
+          Expanded(
+            flex: 6,
+            child: Container(
+              child: ListTile(
+                contentPadding:
+                EdgeInsets.symmetric(horizontal: 8.0, vertical: 0.0),
+                title: Text(
+                  (index + 1).toString() + '. ' + question.questionEn,
+                  style: Utility.textStyleQuestionEn,
+                ),
+                subtitle: Text(
+                  question.questionVi,
+                  style: Utility.textStyleQuestionVi,
+                ),
+              ),
+            ),
+          ),
+          Expanded(
+              flex: 1,
+              child: FlatButton(
+                  onPressed: () {
+                    if(widget.listCacheSave != null) {
+                      if(widget.listCacheSave!.listQuestion== null) {
+                        widget.listCacheSave!.listQuestion = <ListQuestion>[];
+                      }
+                      widget.listCacheSave!.listQuestion.add(question);
+                    } else {
+                      widget.listCacheSave = Data('', <ListQuestion>[]);
+                      widget.listCacheSave!.listQuestion.add(question);
+                    }
+                    Utility.saveDataCacheByTopicName(widget.listCacheSave!);
+                    setState(() {
 
+                    });
+                  },
+                  child: Icon(
+                    Icons.save,
+                  )))
+        ]);
+      }
+    } else {
+      if(widget.listCacheSave!= null && widget.listCacheSave!.listQuestion.contains(question)) {
+        return Row(children: [
+          Expanded(
+            child: Container(
+              child: ListTile(
+                contentPadding:
+                EdgeInsets.symmetric(horizontal: 8.0, vertical: 0.0),
+                title: Text(
+                  (index + 1).toString() + '. ' + question.questionEn,
+                  style: Utility.textStyleQuestionEn,
+                ),
+                subtitle: Text(
+                  question.questionVi,
+                  style: Utility.textStyleQuestionVi,
+                ),
+              ),
+            ),
+            flex: 4,
+          ),
+          Expanded(
+              child: Container(
+                margin: EdgeInsets.only(right: 8.0, top: 8, bottom: 8),
+                child: Image(
+                    image: AssetImage(
+                        'images/imagecontent/' + question.questionCode!),
+                    fit: BoxFit.cover),
+              ),
+              flex: 3),
+        ]);
+      }else {
+        return Row(children: [
+          Expanded(
+            child: Container(
+              child: ListTile(
+                contentPadding:
+                EdgeInsets.symmetric(horizontal: 8.0, vertical: 0.0),
+                title: Text(
+                  (index + 1).toString() + '. ' + question.questionEn,
+                  style: Utility.textStyleQuestionEn,
+                ),
+                subtitle: Text(
+                  question.questionVi,
+                  style: Utility.textStyleQuestionVi,
+                ),
+              ),
+            ),
+            flex: 4,
+          ),
+          Expanded(
+              child: Container(
+                margin: EdgeInsets.only(right: 8.0, top: 8, bottom: 8),
+                child: Image(
+                    image: AssetImage(
+                        'images/imagecontent/' + question.questionCode!),
+                    fit: BoxFit.cover),
+              ),
+              flex: 3),
+          Expanded(
+              flex: 1,
+              child: FlatButton(
+                  onPressed: () {
+                    if(widget.listCacheSave != null) {
+                      if(widget.listCacheSave!.listQuestion== null) {
+                        widget.listCacheSave!.listQuestion = <ListQuestion>[];
+                      }
+                      widget.listCacheSave!.listQuestion.add(question);
+                    } else {
+                      widget.listCacheSave = Data('', <ListQuestion>[]);
+                      widget.listCacheSave!.listQuestion.add(question);
+                    }
+                    Utility.saveDataCacheByTopicName(widget.listCacheSave!);
+
+                    setState(() {
+
+                    });
+                  },
+                  child: Icon(
+                    Icons.save,
+                  )))
+        ]);
+      }
+
+    }
   }
 
   Widget getItemAnswer(ListQuestion question, int numAnswer) {
-
-    if (question.answers[numAnswer].answerCode == null || question.answers[numAnswer].answerCode.isEmpty) {
+    if (question.answers[numAnswer].answerCode == null ||
+        question.answers[numAnswer].answerCode.isEmpty) {
       return GestureDetector(
         onTap: () {
           if (!question.isSelected) {
@@ -310,36 +412,36 @@ class _ReviewQuestionState extends State<ReviewQuestionScreen> {
               children: [
                 Center(
                     child: Container(
-                      width: 30,
-                      margin: EdgeInsets.only(left: 10),
-                      height: 30,
-                      child: Center(
-                          child: Text(
-                            Utility.getTitleAnswer(numAnswer),
-                            style: Utility.textStyleTitleAnswer,
-                          )),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
-                          color: Colors.blue),
-                    )),
+                  width: 30,
+                  margin: EdgeInsets.only(left: 10),
+                  height: 30,
+                  child: Center(
+                      child: Text(
+                    Utility.getTitleAnswer(numAnswer),
+                    style: Utility.textStyleTitleAnswer,
+                  )),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      color: Colors.blue),
+                )),
                 SizedBox(
                   width: MediaQuery.of(context).size.width - 50,
                   child: ListTile(
                     contentPadding:
-                    EdgeInsets.symmetric(horizontal: 8.0, vertical: 5.0),
+                        EdgeInsets.symmetric(horizontal: 8.0, vertical: 5.0),
                     title: Text(
                       question.answers[numAnswer].answerEn,
                       style: (question.isSelected &&
-                          (question.answers[numAnswer].correct ||
-                              question.answers[numAnswer].isSelected))
+                              (question.answers[numAnswer].correct ||
+                                  question.answers[numAnswer].isSelected))
                           ? Utility.textStyleAnswerEnWhite
                           : Utility.textStyleAnswerEn,
                     ),
                     subtitle: Text(
                       question.answers[numAnswer].answerVi,
                       style: (question.isSelected &&
-                          (question.answers[numAnswer].correct ||
-                              question.answers[numAnswer].isSelected))
+                              (question.answers[numAnswer].correct ||
+                                  question.answers[numAnswer].isSelected))
                           ? Utility.textStyleAnswerViWhite
                           : Utility.textStyleAnswerVi,
                     ),
@@ -376,48 +478,51 @@ class _ReviewQuestionState extends State<ReviewQuestionScreen> {
               children: [
                 Center(
                     child: Container(
-                      width: 30,
-                      margin: EdgeInsets.only(left: 10),
-                      height: 30,
-                      child: Center(
-                          child: Text(
-                            Utility.getTitleAnswer(numAnswer),
-                            style: Utility.textStyleTitleAnswer,
-                          )),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
-                          color: HexColor.mainColor()),
-                    )),
+                  width: 30,
+                  margin: EdgeInsets.only(left: 10),
+                  height: 30,
+                  child: Center(
+                      child: Text(
+                    Utility.getTitleAnswer(numAnswer),
+                    style: Utility.textStyleTitleAnswer,
+                  )),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      color: HexColor.mainColor()),
+                )),
                 SizedBox(
                   width: MediaQuery.of(context).size.width - 150,
                   height: 100,
                   child: ListTile(
                     contentPadding:
-                    EdgeInsets.symmetric(horizontal: 8.0, vertical: 5.0),
+                        EdgeInsets.symmetric(horizontal: 8.0, vertical: 5.0),
                     title: Text(
                       question.answers[numAnswer].answerEn,
                       style: (question.isSelected &&
-                          (question.answers[numAnswer].correct ||
-                              question.answers[numAnswer].isSelected))
+                              (question.answers[numAnswer].correct ||
+                                  question.answers[numAnswer].isSelected))
                           ? Utility.textStyleAnswerEnWhite
                           : Utility.textStyleAnswerEn,
                     ),
                     subtitle: Text(
                       question.answers[numAnswer].answerVi,
                       style: (question.isSelected &&
-                          (question.answers[numAnswer].correct ||
-                              question.answers[numAnswer].isSelected))
+                              (question.answers[numAnswer].correct ||
+                                  question.answers[numAnswer].isSelected))
                           ? Utility.textStyleAnswerViWhite
                           : Utility.textStyleAnswerVi,
                     ),
                   ),
                 ),
-                Expanded(child: Container(
-                  margin: EdgeInsets.only(right: 8.0, top: 8, bottom: 8),
-                  child: Image(
-                      image: AssetImage('images/imagecontent/' + question.answers[numAnswer].answerCode),
-                      fit: BoxFit.cover),
-                ), flex: 2)
+                Expanded(
+                    child: Container(
+                      margin: EdgeInsets.only(right: 8.0, top: 8, bottom: 8),
+                      child: Image(
+                          image: AssetImage('images/imagecontent/' +
+                              question.answers[numAnswer].answerCode),
+                          fit: BoxFit.cover),
+                    ),
+                    flex: 2)
               ],
             ),
             margin: EdgeInsets.only(bottom: 10),

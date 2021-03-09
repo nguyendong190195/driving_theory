@@ -30,8 +30,6 @@ dependencies:
   cupertino_icons: ^1.0.0
   shared_preferences: ^2.0.3
   flutter_countdown_timer: ^4.0.0
-#  flutter_email_sender: ^4.0.0
-#  percent_indicator: "^2.1.7+2"
 
 dev_dependencies:
   flutter_test:

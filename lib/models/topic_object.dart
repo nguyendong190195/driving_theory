@@ -83,6 +83,7 @@ class ListQuestion {
   late String? questionCode;
   late List<Answers> answers;
   late bool isSelected = false;
+  late bool existCache = false;
 
   ListQuestion(this.questionEn);
 

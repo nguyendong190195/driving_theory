@@ -137,7 +137,7 @@ class _ReviewMockTestState extends State<ReviewMockTestScreen> {
 
   int percentTotal() {
     double percent = numberCorrect().toDouble() / 50.toDouble();
-    return percent.round();
+    return (percent * 100).round();
   }
 
   int numberCorrect() {
