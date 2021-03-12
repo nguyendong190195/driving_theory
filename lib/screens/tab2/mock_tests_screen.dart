@@ -9,7 +9,7 @@ import 'package:flutter/services.dart';
 
 class MockTestsScreen extends StatefulWidget {
   DataTopic dataTopic;
-  late List<ListQuestion> datas = <ListQuestion>[];
+   List<ListQuestion> datas = <ListQuestion>[];
   MockTestsScreen(this.dataTopic);
 
   @override
@@ -82,9 +82,16 @@ class _MockTestsState extends State<MockTestsScreen> {
                               }
                             }
                             List<ListQuestion> dataRandom = <ListQuestion>[];
-                            for (int i = 0; i < 50; i++) {
+                            Set<int> indexSet = new Set();
+                            while(true) {
+                              indexSet.add(new Random().nextInt(widget.datas.length));
+                              if (indexSet.length == 50) {
+                                break;
+                              }
+                            }
+                            for (int i = 0; i < indexSet.length; i++) {
                               ListQuestion question =
-                                widget.datas[new Random().nextInt(50)];
+                                widget.datas[indexSet.elementAt(i)];
                               dataRandom.add(question.clone());
                             }
 
@@ -93,7 +100,7 @@ class _MockTestsState extends State<MockTestsScreen> {
                                 MaterialPageRoute(settings: RouteSettings(name: "/Page1"),builder: (context) => screen));
                           },
                           child: Text(
-                            "Start tests",
+                            "Start example test now",
                             style: TextStyle(fontSize: 16.0),
                           ),
                         ),

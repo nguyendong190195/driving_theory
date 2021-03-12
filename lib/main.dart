@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
         home: FutureBuilder(
           future: Utility.getDataCacheByTopicName(),
           builder: (context, snapshot) {
-            Data? dataCacheSave;
+            Data dataCacheSave  = Data('topic', <ListQuestion>[]);
             if (snapshot.data != null) {
               dataCacheSave = snapshot.data as Data;
             }
@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
               future: Utility.getDataByName(),
               builder: (context, snapshot) {
                 _widgetOptions.clear();
-                DataTopic? dataCache;
+                DataTopic dataCache;
                 if (snapshot.data != null) {
                   dataCache = snapshot.data as DataTopic;
                 }

@@ -1,5 +1,5 @@
 class DataTopic {
-  late String title;
+   String title;
    List<Data> data = <Data>[];
 
   DataTopic(this.title);
@@ -40,8 +40,8 @@ class DataTopic {
 }
 
 class Data {
-  late String topic;
-  late List<ListQuestion> listQuestion;
+   String topic;
+   List<ListQuestion> listQuestion;
 
   Data(this.topic, this.listQuestion);
 
@@ -78,12 +78,12 @@ class Data {
 }
 
 class ListQuestion {
-  late String questionEn;
-  late String questionVi;
-  late String? questionCode;
-  late List<Answers> answers;
-  late bool isSelected = false;
-  late bool existCache = false;
+   String questionEn;
+   String questionVi;
+   String questionCode;
+   List<Answers> answers;
+   bool isSelected = false;
+   bool existCache = false;
 
   ListQuestion(this.questionEn);
 
@@ -131,11 +131,11 @@ class ListQuestion {
 }
 
 class Answers {
-  late String answerEn;
-  late String answerVi;
-  late String answerCode;
-  late bool correct;
-  late bool isSelected = false;
+   String answerEn;
+   String answerVi;
+   String answerCode;
+   bool correct;
+   bool isSelected = false;
 
   Answers clone() {
     Answers answersClone = new Answers(answerEn);

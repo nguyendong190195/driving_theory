@@ -1,15 +1,15 @@
-import 'package:driving_theory/extension/circular_percent_indicator.dart';
 import 'package:driving_theory/extension/colors_extension.dart';
 import 'package:driving_theory/extension/utility.dart';
 import 'package:driving_theory/models/topic_object.dart';
 import 'package:driving_theory/screens/tab1/review_question_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
 
 // ignore: must_be_immutable
 class PracticeAllQuestionScreen extends StatefulWidget {
   DataTopic dataTopic;
-  late List<ListQuestion> listQuestionCache;
-  Data? listCacheSave;
+   List<ListQuestion> listQuestionCache;
+  Data listCacheSave;
 
   PracticeAllQuestionScreen(this.dataTopic, this.listCacheSave);
 
@@ -25,8 +25,8 @@ class _PracticeAllQuestionState extends State<PracticeAllQuestionScreen> {
   @override
   Widget build(BuildContext context) {
     if (widget.listCacheSave != null &&
-        widget.listCacheSave!.listQuestion != null &&
-        !widget.listCacheSave!.listQuestion.isEmpty) {
+        widget.listCacheSave.listQuestion != null &&
+        !widget.listCacheSave.listQuestion.isEmpty) {
       return MaterialApp(
         home: DefaultTabController(
           length: 2,
@@ -45,7 +45,7 @@ class _PracticeAllQuestionState extends State<PracticeAllQuestionScreen> {
                 tabs: [
                   Tab(
                       child: Text(
-                    'All practice',
+                    'All categories',
                     textAlign: TextAlign.start,
                   )),
                   Tab(
@@ -77,7 +77,7 @@ class _PracticeAllQuestionState extends State<PracticeAllQuestionScreen> {
                     itemBuilder: (BuildContext context, int index) {
                       return buildItemReview(index);
                     },
-                    itemCount: widget.listCacheSave!.listQuestion.length,
+                    itemCount: widget.listCacheSave.listQuestion.length,
                   ))
             ]),
           ),
@@ -107,7 +107,7 @@ class _PracticeAllQuestionState extends State<PracticeAllQuestionScreen> {
   }
 
   Widget buildItemReview(int index) {
-    ListQuestion question = widget.listCacheSave!.listQuestion[index];
+    ListQuestion question = widget.listCacheSave.listQuestion[index];
     return Container(
       child: Container(
           color: Colors.white,
@@ -129,7 +129,7 @@ class _PracticeAllQuestionState extends State<PracticeAllQuestionScreen> {
       decoration: new BoxDecoration(
         boxShadow: [
           new BoxShadow(
-            color: Colors.grey[400]!,
+            color: Colors.grey[400],
             blurRadius: 1.0,
           ),
         ],
@@ -142,14 +142,6 @@ class _PracticeAllQuestionState extends State<PracticeAllQuestionScreen> {
         question.answers[numAnswer].answerCode.isEmpty) {
       return GestureDetector(
         onTap: () {
-          if (!question.isSelected) {
-            question.answers[numAnswer].isSelected = true;
-            setState(() {
-              question.isSelected = true;
-              widget.dataTopic.title = '';
-              Utility.saveDataByName(widget.dataTopic);
-            });
-          }
         },
         child: Container(
           margin: EdgeInsets.only(left: 5, right: 5),
@@ -157,9 +149,8 @@ class _PracticeAllQuestionState extends State<PracticeAllQuestionScreen> {
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10.0),
                 side: BorderSide(
-                    color: Utility.getColorInSelectBorder(
-                        question, numAnswer, true))),
-            color: Utility.getColorInSelect(question, numAnswer),
+                    color: question.answers[numAnswer].correct ? HexColor.colorAnswerCorrect() : HexColor.colorAnswerNormal())),
+            color: question.answers[numAnswer].correct ? HexColor.colorAnswerCorrect() : HexColor.colorAnswerNormal(),
             child: Row(
               children: [
                 Center(
@@ -184,16 +175,14 @@ class _PracticeAllQuestionState extends State<PracticeAllQuestionScreen> {
                     title: Text(
                       question.answers[numAnswer].answerEn,
                       style: (question.isSelected &&
-                              (question.answers[numAnswer].correct ||
-                                  question.answers[numAnswer].isSelected))
+                              (question.answers[numAnswer].correct))
                           ? Utility.textStyleAnswerEnWhite
                           : Utility.textStyleAnswerEn,
                     ),
                     subtitle: Text(
                       question.answers[numAnswer].answerVi,
                       style: (question.isSelected &&
-                              (question.answers[numAnswer].correct ||
-                                  question.answers[numAnswer].isSelected))
+                              (question.answers[numAnswer].correct))
                           ? Utility.textStyleAnswerViWhite
                           : Utility.textStyleAnswerVi,
                     ),
@@ -208,14 +197,6 @@ class _PracticeAllQuestionState extends State<PracticeAllQuestionScreen> {
     } else {
       return GestureDetector(
         onTap: () {
-          if (!question.isSelected) {
-            question.answers[numAnswer].isSelected = true;
-            setState(() {
-              question.isSelected = true;
-              widget.dataTopic.title = '';
-              Utility.saveDataByName(widget.dataTopic);
-            });
-          }
         },
         child: Container(
           margin: EdgeInsets.only(left: 5, right: 5),
@@ -223,9 +204,8 @@ class _PracticeAllQuestionState extends State<PracticeAllQuestionScreen> {
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10.0),
                 side: BorderSide(
-                    color: Utility.getColorInSelectBorder(
-                        question, numAnswer, true))),
-            color: Utility.getColorInSelect(question, numAnswer),
+                    color: question.answers[numAnswer].correct ? HexColor.colorAnswerCorrect() : HexColor.colorAnswerNormal())),
+            color: question.answers[numAnswer].correct ? HexColor.colorAnswerCorrect() : HexColor.colorAnswerNormal(),
             child: Row(
               children: [
                 Center(
@@ -285,7 +265,7 @@ class _PracticeAllQuestionState extends State<PracticeAllQuestionScreen> {
   }
 
   Row rowInQuestion(ListQuestion question, int index) {
-    if (question.questionCode == null || question.questionCode!.isEmpty) {
+    if (question.questionCode == null || question.questionCode.isEmpty) {
       return Row(children: [
         Expanded(
           flex: 6,
@@ -309,14 +289,14 @@ class _PracticeAllQuestionState extends State<PracticeAllQuestionScreen> {
             child: FlatButton(
                 onPressed: () {
                   if (widget.listCacheSave != null) {
-                    if (widget.listCacheSave!.listQuestion == null) {
-                      widget.listCacheSave!.listQuestion = <ListQuestion>[];
+                    if (widget.listCacheSave.listQuestion == null) {
+                      widget.listCacheSave.listQuestion = <ListQuestion>[];
                     }
 
-                    widget.listCacheSave!.listQuestion.remove(question);
+                    widget.listCacheSave.listQuestion.remove(question);
                   }
 
-                  Utility.saveDataCacheByTopicName(widget.listCacheSave!);
+                  Utility.saveDataCacheByTopicName(widget.listCacheSave);
                   setState(() {
 
                   });
@@ -350,7 +330,7 @@ class _PracticeAllQuestionState extends State<PracticeAllQuestionScreen> {
               margin: EdgeInsets.only(right: 8.0, top: 8, bottom: 8),
               child: Image(
                   image: AssetImage(
-                      'images/imagecontent/' + question.questionCode!),
+                      'images/imagecontent/' + question.questionCode.trim()),
                   fit: BoxFit.cover),
             ),
             flex: 3),
@@ -359,12 +339,12 @@ class _PracticeAllQuestionState extends State<PracticeAllQuestionScreen> {
             child: FlatButton(
                 onPressed: () {
                   if (widget.listCacheSave != null) {
-                    if (widget.listCacheSave!.listQuestion == null) {
-                      widget.listCacheSave!.listQuestion = <ListQuestion>[];
+                    if (widget.listCacheSave.listQuestion == null) {
+                      widget.listCacheSave.listQuestion = <ListQuestion>[];
                     }
-                    widget.listCacheSave!.listQuestion.remove(question);
+                    widget.listCacheSave.listQuestion.remove(question);
                   }
-                  Utility.saveDataCacheByTopicName(widget.listCacheSave!);
+                  Utility.saveDataCacheByTopicName(widget.listCacheSave);
                   setState(() {
 
                   });

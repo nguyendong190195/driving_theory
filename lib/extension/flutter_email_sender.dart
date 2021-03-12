@@ -25,7 +25,7 @@ class Email {
     this.cc = const [],
     this.bcc = const [],
     this.body = '',
-    required this.attachmentPaths,
+    this.attachmentPaths,
     this.isHTML = false,
   });
 

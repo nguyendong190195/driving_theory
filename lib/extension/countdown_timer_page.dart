@@ -9,7 +9,7 @@ class CountdownTimerPage extends StatefulWidget {
 }
 
 class _CountdownTimerPageState extends State<CountdownTimerPage> {
-  late CountdownTimerController controller;
+   CountdownTimerController controller;
   int endTime = DateTime.now().millisecondsSinceEpoch + Duration(days: 0, hours: 1, seconds: 30).inMilliseconds;
 
   @override
@@ -38,7 +38,7 @@ class _CountdownTimerPageState extends State<CountdownTimerPage> {
           ),
           CountdownTimer(
             controller: controller,
-            widgetBuilder: (_, CurrentRemainingTime? time) {
+            widgetBuilder: (_, CurrentRemainingTime time) {
               if (time == null) {
                 return Text('Game over');
               }
@@ -48,7 +48,7 @@ class _CountdownTimerPageState extends State<CountdownTimerPage> {
           ),
           CountdownTimer(
             controller: controller,
-            widgetBuilder: (BuildContext context, CurrentRemainingTime? time) {
+            widgetBuilder: (BuildContext context, CurrentRemainingTime time) {
               if (time == null) {
                 return Text('Game over');
               }

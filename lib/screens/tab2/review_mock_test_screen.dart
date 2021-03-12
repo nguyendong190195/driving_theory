@@ -1,6 +1,5 @@
 import 'dart:ui';
 
-import 'package:driving_theory/extension/circular_percent_indicator.dart';
 import 'package:driving_theory/extension/colors_extension.dart';
 import 'package:driving_theory/extension/utility.dart';
 import 'package:driving_theory/models/topic_object.dart';
@@ -9,7 +8,7 @@ import 'package:flutter/material.dart';
 class ReviewMockTestScreen extends StatefulWidget {
   DataTopic dataTopic;
   int index;
-  late final VoidCallback onTap;
+   final VoidCallback onTap;
 
   ReviewMockTestScreen(this.dataTopic, this.index, this.onTap);
 
@@ -203,7 +202,7 @@ class _ReviewMockTestState extends State<ReviewMockTestScreen> {
       decoration: new BoxDecoration(
         boxShadow: [
           new BoxShadow(
-            color: Colors.grey[400]!,
+            color: Colors.grey[400],
             blurRadius: 1.0,
           ),
         ],

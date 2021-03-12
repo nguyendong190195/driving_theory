@@ -1,17 +1,19 @@
 import 'dart:ui';
 
-import 'package:driving_theory/extension/circular_percent_indicator.dart';
 import 'package:driving_theory/extension/colors_extension.dart';
 import 'package:driving_theory/extension/utility.dart';
 import 'package:driving_theory/models/topic_object.dart';
 import 'package:flutter/material.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
 
 class ReviewQuestionScreen extends StatefulWidget {
   DataTopic dataTopic;
   int index;
-  late final VoidCallback onTap;
-  Data? listCacheSave;
-  ReviewQuestionScreen(this.dataTopic, this.index, this.onTap, this.listCacheSave);
+   final VoidCallback onTap;
+  Data listCacheSave;
+
+  ReviewQuestionScreen(
+      this.dataTopic, this.index, this.onTap, this.listCacheSave);
 
   @override
   State<StatefulWidget> createState() {
@@ -137,7 +139,7 @@ class _ReviewQuestionState extends State<ReviewQuestionScreen> {
                     ),
                     Container(
                         margin: EdgeInsets.only(left: 10),
-                        child: Text('Corrects'))
+                        child: Text('Correct'))
                   ],
                 ),
               ),
@@ -208,26 +210,28 @@ class _ReviewQuestionState extends State<ReviewQuestionScreen> {
         widget.dataTopic.data[widget.index].listQuestion[index];
     return Container(
       child: Container(
-          color: Colors.white,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              rowInQuestion(question, index),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  getItemAnswer(question, 0),
-                  getItemAnswer(question, 1),
-                  getItemAnswer(question, 2),
-                  getItemAnswer(question, 3),
-                ],
-              ),
-            ],
-          )),
+        color: Colors.white,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            rowInQuestion(question, index),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                getItemAnswer(question, 0),
+                getItemAnswer(question, 1),
+                getItemAnswer(question, 2),
+                getItemAnswer(question, 3),
+              ],
+            ),
+          ],
+        ),
+        margin: EdgeInsets.only(bottom: 15),
+      ),
       decoration: new BoxDecoration(
         boxShadow: [
           new BoxShadow(
-            color: Colors.grey[400]!,
+            color: Colors.grey[400],
             blurRadius: 1.0,
           ),
         ],
@@ -236,15 +240,16 @@ class _ReviewQuestionState extends State<ReviewQuestionScreen> {
   }
 
   Row rowInQuestion(ListQuestion question, int index) {
-    if (question.questionCode == null || question.questionCode!.isEmpty) {
-      if(widget.listCacheSave != null && widget.listCacheSave!.listQuestion.contains(question)) {
+    if (question.questionCode == null || question.questionCode.isEmpty) {
+      if (widget.listCacheSave != null &&
+          widget.listCacheSave.listQuestion.contains(question)) {
         return Row(children: [
           Expanded(
             flex: 6,
             child: Container(
               child: ListTile(
                 contentPadding:
-                EdgeInsets.symmetric(horizontal: 8.0, vertical: 0.0),
+                    EdgeInsets.symmetric(horizontal: 8.0, vertical: 0.0),
                 title: Text(
                   (index + 1).toString() + '. ' + question.questionEn,
                   style: Utility.textStyleQuestionEn,
@@ -257,14 +262,14 @@ class _ReviewQuestionState extends State<ReviewQuestionScreen> {
             ),
           ),
         ]);
-      }else {
+      } else {
         return Row(children: [
           Expanded(
             flex: 6,
             child: Container(
               child: ListTile(
                 contentPadding:
-                EdgeInsets.symmetric(horizontal: 8.0, vertical: 0.0),
+                    EdgeInsets.symmetric(horizontal: 8.0, vertical: 0.0),
                 title: Text(
                   (index + 1).toString() + '. ' + question.questionEn,
                   style: Utility.textStyleQuestionEn,
@@ -280,19 +285,17 @@ class _ReviewQuestionState extends State<ReviewQuestionScreen> {
               flex: 1,
               child: FlatButton(
                   onPressed: () {
-                    if(widget.listCacheSave != null) {
-                      if(widget.listCacheSave!.listQuestion== null) {
-                        widget.listCacheSave!.listQuestion = <ListQuestion>[];
+                    if (widget.listCacheSave != null) {
+                      if (widget.listCacheSave.listQuestion == null) {
+                        widget.listCacheSave.listQuestion = <ListQuestion>[];
                       }
-                      widget.listCacheSave!.listQuestion.add(question);
+                      widget.listCacheSave.listQuestion.add(question);
                     } else {
                       widget.listCacheSave = Data('', <ListQuestion>[]);
-                      widget.listCacheSave!.listQuestion.add(question);
+                      widget.listCacheSave.listQuestion.add(question);
                     }
-                    Utility.saveDataCacheByTopicName(widget.listCacheSave!);
-                    setState(() {
-
-                    });
+                    Utility.saveDataCacheByTopicName(widget.listCacheSave);
+                    setState(() {});
                   },
                   child: Icon(
                     Icons.save,
@@ -300,13 +303,14 @@ class _ReviewQuestionState extends State<ReviewQuestionScreen> {
         ]);
       }
     } else {
-      if(widget.listCacheSave!= null && widget.listCacheSave!.listQuestion.contains(question)) {
+      if (widget.listCacheSave != null &&
+          widget.listCacheSave.listQuestion.contains(question)) {
         return Row(children: [
           Expanded(
             child: Container(
               child: ListTile(
                 contentPadding:
-                EdgeInsets.symmetric(horizontal: 8.0, vertical: 0.0),
+                    EdgeInsets.symmetric(horizontal: 8.0, vertical: 0.0),
                 title: Text(
                   (index + 1).toString() + '. ' + question.questionEn,
                   style: Utility.textStyleQuestionEn,
@@ -324,18 +328,18 @@ class _ReviewQuestionState extends State<ReviewQuestionScreen> {
                 margin: EdgeInsets.only(right: 8.0, top: 8, bottom: 8),
                 child: Image(
                     image: AssetImage(
-                        'images/imagecontent/' + question.questionCode!),
+                        'images/imagecontent/' + question.questionCode.trim()),
                     fit: BoxFit.cover),
               ),
               flex: 3),
         ]);
-      }else {
+      } else {
         return Row(children: [
           Expanded(
             child: Container(
               child: ListTile(
                 contentPadding:
-                EdgeInsets.symmetric(horizontal: 8.0, vertical: 0.0),
+                    EdgeInsets.symmetric(horizontal: 8.0, vertical: 0.0),
                 title: Text(
                   (index + 1).toString() + '. ' + question.questionEn,
                   style: Utility.textStyleQuestionEn,
@@ -353,7 +357,7 @@ class _ReviewQuestionState extends State<ReviewQuestionScreen> {
                 margin: EdgeInsets.only(right: 8.0, top: 8, bottom: 8),
                 child: Image(
                     image: AssetImage(
-                        'images/imagecontent/' + question.questionCode!),
+                        'images/imagecontent/' + question.questionCode.trim()),
                     fit: BoxFit.cover),
               ),
               flex: 3),
@@ -361,27 +365,24 @@ class _ReviewQuestionState extends State<ReviewQuestionScreen> {
               flex: 1,
               child: FlatButton(
                   onPressed: () {
-                    if(widget.listCacheSave != null) {
-                      if(widget.listCacheSave!.listQuestion== null) {
-                        widget.listCacheSave!.listQuestion = <ListQuestion>[];
+                    if (widget.listCacheSave != null) {
+                      if (widget.listCacheSave.listQuestion == null) {
+                        widget.listCacheSave.listQuestion = <ListQuestion>[];
                       }
-                      widget.listCacheSave!.listQuestion.add(question);
+                      widget.listCacheSave.listQuestion.add(question);
                     } else {
                       widget.listCacheSave = Data('', <ListQuestion>[]);
-                      widget.listCacheSave!.listQuestion.add(question);
+                      widget.listCacheSave.listQuestion.add(question);
                     }
-                    Utility.saveDataCacheByTopicName(widget.listCacheSave!);
+                    Utility.saveDataCacheByTopicName(widget.listCacheSave);
 
-                    setState(() {
-
-                    });
+                    setState(() {});
                   },
                   child: Icon(
                     Icons.save,
                   )))
         ]);
       }
-
     }
   }
 

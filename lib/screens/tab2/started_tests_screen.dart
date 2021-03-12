@@ -21,7 +21,7 @@ class StartedTestsScreen extends StatefulWidget {
 }
 
 class _StartedTestsState extends State<StartedTestsScreen> {
-  late CountdownTimerController controller;
+   CountdownTimerController controller;
   int endTime = DateTime.now().millisecondsSinceEpoch +
       Duration(seconds: 3420).inMilliseconds;
 
@@ -84,7 +84,7 @@ class _StartedTestsState extends State<StartedTestsScreen> {
             ),
             title: CountdownTimer(
               widgetBuilder: (context, currentTime) {
-                return Text(dateTimeColdown(currentTime!));
+                return Text(dateTimeColdown(currentTime));
               },
               textStyle: TextStyle(
                 fontSize: 20,
@@ -144,7 +144,7 @@ class _StartedTestsState extends State<StartedTestsScreen> {
   String dateTimeColdown(CurrentRemainingTime currentRemainingTime) {
     String time = '';
     if (currentRemainingTime.min != null) {
-      if (currentRemainingTime.min! < 10) {
+      if (currentRemainingTime.min < 10) {
         time = '0' + currentRemainingTime.min.toString();
       } else {
         time = currentRemainingTime.min.toString();
@@ -154,7 +154,7 @@ class _StartedTestsState extends State<StartedTestsScreen> {
     }
 
     if (currentRemainingTime.sec != null) {
-      if (currentRemainingTime.sec! < 10) {
+      if (currentRemainingTime.sec < 10) {
         time += ':0' + currentRemainingTime.sec.toString();
       } else {
         time += ':' + currentRemainingTime.sec.toString();
@@ -168,7 +168,7 @@ class _StartedTestsState extends State<StartedTestsScreen> {
 
   Widget buildItemReview(int index) {
     ListQuestion question = widget.questions[index];
-    if (question.questionCode == null || question.questionCode!.isEmpty) {
+    if (question.questionCode == null || question.questionCode.isEmpty) {
       return SingleChildScrollView(
         child: Container(
           child: Column(
@@ -222,7 +222,7 @@ class _StartedTestsState extends State<StartedTestsScreen> {
                       margin: EdgeInsets.only(right: 8.0, top: 8, bottom: 8),
                       child: Image(
                           image: AssetImage(
-                              'images/imagecontent/' + question.questionCode!),
+                              'images/imagecontent/' + question.questionCode.trim()),
                           fit: BoxFit.cover),
                     ),
                     flex: 2)

@@ -49,7 +49,7 @@ extension HexColor on Color {
   }
 
   static Color colorAnswerSelected() {
-    return Colors.red[500]!;
+    return Colors.red[500];
   }
 
   static Color colorAnswerFail() {

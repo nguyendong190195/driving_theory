@@ -41,7 +41,7 @@
           "answers": [
             {
               "answer_en": "Move to the right",
-              "answer_vi": "Đi chuyển sang bên phải",
+              "answer_vi": "Di chuyển sang bên phải",
               "answer_code": "",
               "correct": false
             },
@@ -253,7 +253,7 @@
         },
         {
           "question_en": "You're following a large vehicle. Why should you stay a safe distance behind it?",
-          "question_vi": "Bạn đang theo sau một chiếc xe lớn. Tại sao bạn nên giữ khoảng cách an toàn đằng sau nó?",
+          "question_vi": "Bạn đang theo sau một chiếc xe lớn. Tại sao bạn nên giữ khoảng cách an toàn phía sau nó?",
           "question_code": "",
           "answers": [
             {
@@ -266,13 +266,13 @@
               "answer_en": "You'll help the large vehicle to stop more easily",
               "answer_vi": "Bạn sẽ giúp xe lớn dừng dễ dàng hơn",
               "answer_code": "",
-              "correct": true
+              "correct": false
             },
             {
               "answer_en": "You'll give the driver a chance to see you in their mirrors",
               "answer_vi": "Bạn sẽ giúp cho người lái xe có thể nhìn thấy bạn trong gương",
               "answer_code": "",
-              "correct": false
+              "correct": true
             },
             {
               "answer_en": "You'll keep out of the wind better",
@@ -326,7 +326,7 @@
             },
             {
               "answer_en": "Move quickly to where you can see so you only block traffic from one direction",
-              "answer_vi": "Di chuyển nhanh đến nơi bạn có thể nhìn nên bạn chỉ chặn các phương tiện lưu thông từ 1 chiều",
+              "answer_vi": "Di chuyển nhanh đến nơi bạn có thể nhìn vì thế bạn chỉ chặn các phương tiện lưu thông từ 1 chiều",
               "answer_code": "",
               "correct": false
             },
@@ -687,7 +687,7 @@
         },
         {
           "question_en": "What's likely to happen if you use a hands-free phone while you're driving?",
-          "question_vi": "Điều gì có thể xảy ra nếu bạn sử dụng điện thoại rảnh tay khi đang lái xe?",
+          "question_vi": "Điều gì có thể xảy ra nếu bạn sử dụng thiết bị rảnh tay khi đang lái xe?",
           "question_code": "",
           "answers": [
             {
@@ -719,7 +719,7 @@
         {
           "question_en": "You're turning right onto a dual carriageway. What should you do before emerging?",
           "question_vi": "Bạn đang rẽ phải vào đường hai chiều. Bạn nên làm gì trước khi nhập làn?",
-          "question_code": "BB1632.gif",
+          "question_code": "",
           "answers": [
             {
               "answer_en": "Stop, apply the parking brake and then select a low gear",
@@ -982,7 +982,7 @@
             },
             {
               "answer_en": "Slow down",
-              "answer_vi": "Chậm lại",
+              "answer_vi": "Đi chậm lại",
               "answer_code": "",
               "correct": true
             },
@@ -1329,7 +1329,7 @@
             },
             {
               "answer_en": "When telling them that you have right of way",
-              "answer_vi": "Khi muốn thông báo họ rằng bạn có quyền sử dụng con đường",
+              "answer_vi": "Khi muốn thông báo cho họ rằng bạn có quyền sử dụng con đường",
               "answer_code": "",
               "correct": false
             },
@@ -1366,7 +1366,7 @@
             },
             {
               "answer_en": "Slow down and look both ways",
-              "answer_vi": "Chậm lại và nhìn hai bên đường",
+              "answer_vi": "Đi chậm lại và nhìn hai bên đường",
               "answer_code": "",
               "correct": true
             }
@@ -1405,7 +1405,7 @@
         },
         {
           "question_en": "Which colour follows the green signal at a puffin crossing?",
-          "question_vi": "Màu nào tuân theo tín hiệu màu xanh lá cây ở đường puffin?",
+          "question_vi": "Màu nào theo sau tín hiệu màu xanh lá cây ở đường puffin?",
           "question_code": "",
           "answers": [
             {
@@ -1814,7 +1814,7 @@
             {
               "answer_en": "",
               "answer_vi": "",
-              "answer_code": "BB1591a.gif ",
+              "answer_code": "BB1591a.gif",
               "correct": true
             },
             {
@@ -1840,7 +1840,7 @@
         {
           "question_en": "When should you leave a two-second gap between your vehicle and the one in front?",
           "question_vi": "Khi nào bạn nên dừng một khoảng cách hai giây giữa xe của bạn và phương tiện giao thông phía trước?",
-          "question_code": "",
+          "question_code": "BB1636.gift",
           "answers": [
             {
               "answer_en": "When it's raining",
@@ -1986,7 +1986,7 @@
             },
             {
               "answer_en": "Check that your filler cap is securely fastened",
-              "answer_vi": "Kiểm tra để đảm bảo rằng nắp khóa phụ đã được đóngchặt",
+              "answer_vi": "Kiểm tra để đảm bảo rằng nắp khóa phụ đã được đóng chặt",
               "answer_code": "",
               "correct": true
             }
@@ -2047,7 +2047,7 @@
             },
             {
               "answer_en": "The vehicle's gear change mechanism would become stiff",
-              "answer_vi": "Cơ cấu chuyển số của xe sẽ trở nên cứng",
+              "answer_vi": "Cơ cấu chuyển số của xe sẽ trở nên cứng nhắc",
               "answer_code": "",
               "correct": false
             },
@@ -2084,7 +2084,7 @@
             },
             {
               "answer_en": "Between 11.30 pm and 6.00 am on any road",
-              "answer_vi": "Từ 11 giờ 30 tối đến 6 giờ sáng trên bất kỳ tuyến đường",
+              "answer_vi": "Từ 11 giờ 30 tối đến 6 giờ sáng trên bất kỳ tuyến đường nào",
               "answer_code": "",
               "correct": false
             }
@@ -2836,7 +2836,7 @@
         },
         {
           "question_en": "What does it mean if your vehicle keeps bouncing after you sharply press down and release on the bodywork over a wheel?",
-          "question_vi": "Điều này có nghĩa là gì nếu chiếc xe của bạn tiếp tục nảy lên sau khi bạn nhấn mạnh xuống và thả thân xe trên một bánh xe?",
+          "question_vi": "Điều này có nghĩa là gì nếu chiếc xe của bạn tiếp tục nảy lên sau khi bạn nhấn mạnh thân xe xuống và thả tay ra trên một bánh xe?",
           "question_code": "",
           "answers": [
             {
@@ -2872,7 +2872,7 @@
           "answers": [
             {
               "answer_en": "There will be less wind noise",
-              "answer_vi": "Sẽ ít tiếng ồn của gió hơn",
+              "answer_vi": "Tiếng ồn của gió sẽ ít hơn",
               "answer_code": "",
               "correct": false
             },
@@ -2991,7 +2991,7 @@
         },
         {
           "question_en": "How can drivers help the environment?",
-          "question_vi": "Người lái xe có thể giúp được gì cho môi trường?",
+          "question_vi": "Người lái xe có thể giúp bảo vệ môi trường bằng cách nào?",
           "question_code": "",
           "answers": [
             {
@@ -3363,7 +3363,7 @@
         },
         {
           "question_en": "What should you do when leaving your vehicle parked and unattended?",
-          "question_vi": "Bạn nên làm gì khi bạn đỗ và rời khỏi xe?",
+          "question_vi": "Bạn nên làm gì khi bạn rời khỏi phương tiện đang đỗ và không có người trông coi?",
           "question_code": "",
           "answers": [
             {
@@ -3479,7 +3479,7 @@
             },
             {
               "answer_en": "To make sure diesel and petrol engines emit the same fumes",
-              "answer_vi": "Để chắc chắn rằng dầu diesel và xăng thì cũng thải ra một loại khói giống nhau",
+              "answer_vi": "Để chắc chắn rằng dầu diesel và xăng cùng thải ra một loại khói giống nhau",
               "answer_code": "",
               "correct": false
             }
@@ -3932,7 +3932,7 @@
             },
             {
               "answer_en": "Registering with a Vehicle Watch scheme",
-              "answer_vi": "Đăng ký chương trình theo dõi phương tiện",
+              "answer_vi": "Đăng ký trình theo dõi phương tiện",
               "answer_code": "",
               "correct": true
             },
@@ -4107,7 +4107,7 @@
         },
         {
           "question_en": "What's the legal minimum tread depth for tyres on your trailer or caravan?",
-          "question_vi": "Độ sâu tối thiểu hợp pháp của lốp trên xe moóc hoặc xe thùng là bao nhiêu?",
+          "question_vi": "Độ sâu tối thiểu hợp pháp của lốp trên xe moóc hoặc xe thùng du lịch là bao nhiêu?",
           "question_code": "",
           "answers": [
             {
@@ -4262,7 +4262,7 @@
         },
         {
           "question_en": "You have to make an unexpected journey. You're carrying a five-year-old child on the back seat of your car. They're under 1.35 metres (4 feet 5 inches) tall. How should you seat them if a correct child restraint isn't available?",
-          "question_vi": "Bạn phải thực hiện một cuộc hành trình không mong đợi. Bạn đang chở một đứa trẻ năm tuổi trên ghế sau của ô tô. Đứa bé cao dưới 1,35 mét (4 feet 5 inch). Bạn nên để chúng ngồi như thế nào nếu không có ghế giữ trẻ em phù hợp?",
+          "question_vi": "Bạn phải thực hiện một cuộc hành trình không mong đợi. Bạn đang chở một đứa trẻ năm tuổi trên ghế sau của ô tô. Đứa bé cao dưới 1,35 mét (4 feet 5 inches). Bạn nên để chúng ngồi như thế nào nếu không có ghế giữ trẻ em phù hợp?",
           "question_code": "",
           "answers": [
             {
@@ -4293,7 +4293,7 @@
         },
         {
           "question_en": "You're carrying an 11-year-old child on the front seat of your car. They're under 1.35 metres (4 feet 5 inches) tall. What seat belt security must be in place?",
-          "question_vi": "Bạn đang chở một đứa trẻ 11 tuổi trên ghế trước của ô tô. Đứa bé cao dưới 1,35 mét (4 feet 5 inch). Dây an toàn nào phải được cài đặt?",
+          "question_vi": "Bạn đang chở một đứa trẻ 11 tuổi trên ghế trước của ô tô. Đứa bé cao dưới 1,35 mét (4 feet 5 inches). Dây an toàn nào phải được cài đặt?",
           "question_code": "",
           "answers": [
             {
@@ -4418,7 +4418,7 @@
         {
           "question_en": "What does it mean if the Electronic Stability Control (ESC) indicator lamp lights up while you’re driving?",
           "question_vi": "Điều đó có nghĩa là gì nếu đèn báo Kiểm soát ổn định điện tử (ESC) sáng lên khi bạn đang lái xe?",
-          "question_code": "BB4417.gif",
+          "question_code": "BB4417.jpg",
           "answers": [
             {
               "answer_en": "The ESC system has activated",
@@ -4546,7 +4546,7 @@
         },
         {
           "question_en": "You’ve just gone through flood water. What should you do to make sure your brakes are working properly?",
-          "question_vi": "Bạn vừa đi qua một vững nước sâu. Bạn nên làm gì để đảm bảo hệ thống phanh của bạn hoạt động tốt?",
+          "question_vi": "Bạn vừa đi qua một vũng nước sâu. Bạn nên làm gì để đảm bảo hệ thống phanh của bạn hoạt động tốt?",
           "question_code": "",
           "answers": [
             {
@@ -4619,7 +4619,7 @@
             },
             {
               "answer_en": "On an open stretch of road",
-              "answer_vi": "Trên một con đường rộng mở",
+              "answer_vi": "Trên một con đường mở rộng",
               "answer_code": "",
               "correct": true
             },
@@ -4848,7 +4848,7 @@
             },
             {
               "answer_en": "Slow down gently",
-              "answer_vi": "Chậm lại một cách nhẹ nhàng",
+              "answer_vi": "Đi chậm lại một cách nhẹ nhàng",
               "answer_code": "",
               "correct": true
             }
@@ -4941,7 +4941,7 @@
             },
             {
               "answer_en": "Brake gently in plenty of time",
-              "answer_vi": "Phanh nhẹ nhàng trong vài lần",
+              "answer_vi": "Phanh nhiều lần một cách nhẹ nhàng",
               "answer_code": "",
               "correct": true
             }
@@ -5042,7 +5042,7 @@
         },
         {
           "question_en": "You're driving in a built-up area that has traffic-calming measures. What should you do when you approach a road hump?",
-          "question_vi": "Bạn đang lái xe trong khu vực đông đúc có áp dụng các biện pháp điều hòa giao thông. Bạn nên làm gì khi đến gần một đoạn đường có gờ giảm tốc?",
+          "question_vi": "Bạn đang lái xe trong khu vực đông đúc có các biện pháp điều hòa giao thông. Bạn nên làm gì khi đến gần một đoạn đường gồ ghề?",
           "question_code": "BB1076.gif",
           "answers": [
             {
@@ -5104,7 +5104,7 @@
         },
         {
           "question_en": "You're driving a vehicle that has anti-lock brakes. How should you apply the footbrake when you need to stop in an emergency?",
-          "question_vi": "Bạn đang lái một chiếc xe cóhện thống phanh chống bó cứng. Bạn nên sử dụng phanh chân như thế nào khi cần dừng xe trong trường hợp khẩn cấp?",
+          "question_vi": "Bạn đang lái một chiếc xe có hệ thống phanh chống bó cứng. Bạn nên sử dụng phanh chân như thế nào khi cần dừng xe trong trường hợp khẩn cấp?",
           "question_code": "",
           "answers": [
             {
@@ -5259,8 +5259,8 @@
         },
         {
           "question_en": "You're driving on an open road in dry weather. What distance should you keep from the vehicle in front?",
-          "question_vi": "Bạn đang lái xe trên một con đường rộng mở trong thời tiết khô ráo. Bạn nên giữ khoảng cách như thế nào với xe phía trước?",
-          "question_code": "",
+          "question_vi": "Bạn đang lái xe trên một con đường mở rộng trong thời tiết khô ráo. Bạn nên giữ khoảng cách như thế nào với xe phía trước?",
+          "question_code": "BB1657.gif",
           "answers": [
             {
               "answer_en": "A two-second time gap",
@@ -5307,13 +5307,13 @@
             },
             {
               "answer_en": "By changing to a higher gear",
-              "answer_vi": "Bằng cách thay đổi sang thiết bị cao hơn",
+              "answer_vi": "Bằng cách thay đổi sang số cao hơn",
               "answer_code": "",
               "correct": false
             },
             {
               "answer_en": "By selecting neutral gear",
-              "answer_vi": "Bằng cách chọn bánh răng trung tính",
+              "answer_vi": "Bằng cách chọn số mo",
               "answer_code": "",
               "correct": false
             }
@@ -5383,7 +5383,7 @@
         },
         {
           "question_en": "What can result when you travel for long distances in neutral (known as coasting)?",
-          "question_vi": "Điều gì có thể xảy ra khi bạn di chuyển một quãng đường dài ở trạng thái trung lập (được gọi là ngắt li hợp)?",
+          "question_vi": "Điều gì có thể xảy ra khi bạn di chuyển trên một quãng đường dài ở trạng thái trung lập (được gọi là ngắt li hợp)?",
           "question_code": "",
           "answers": [
             {
@@ -5641,13 +5641,13 @@
           "answers": [
             {
               "answer_en": "The road will go steeply uphill",
-              "answer_vi": "Con đường sẽ dốc lên dốc",
+              "answer_vi": "Con đường sẽ hướng lên dốc",
               "answer_code": "",
               "correct": false
             },
             {
               "answer_en": "The road will go steeply downhill",
-              "answer_vi": "Con đường sẽ dốc xuống dốc",
+              "answer_vi": "Con đường sẽ hướng xuống dốc",
               "answer_code": "",
               "correct": false
             },
@@ -6319,7 +6319,7 @@
         {
           "question_en": "How should you drive in areas with traffic-calming measures?",
           "question_vi": "Bạn nên lái xe như thế nào trong những khu vực áp dụng các biện pháp điều hòa giao thông?",
-          "question_code": "AB2723.gif",
+          "question_code": "",
           "answers": [
             {
               "answer_en": "At a reduced speed",
@@ -6360,7 +6360,7 @@
             },
             {
               "answer_en": "Because it’s hard to see to the right",
-              "answer_vi": "Do khó nhìn về phía bên phải",
+              "answer_vi": "Do khó quan sát về phía bên phải",
               "answer_code": "",
               "correct": false
             },
@@ -6515,7 +6515,7 @@
             },
             {
               "answer_en": "There are driveways on the left",
-              "answer_vi": "Clối vào của ga-ra ở phía bên trái",
+              "answer_vi": "Có lối vào của ga-ra ở phía bên trái",
               "answer_code": "",
               "correct": false
             },
@@ -6815,7 +6815,7 @@
         {
           "question_en": "You're invited to a pub lunch. What should you do if you know that you'll have to drive in the evening?",
           "question_vi": "Bạn được mời đến một bữa ăn trưa ở quán rượu. Bạn nên làm gì nếu biết rằng mình sẽ phải lái xe vào buổi tối?",
-          "question_code": "",
+          "question_code": "BB1109.gif",
           "answers": [
             {
               "answer_en": "Avoid mixing your alcoholic drinks",
@@ -7054,7 +7054,7 @@
             },
             {
               "answer_en": "Close all your windows and set the heating to warm",
-              "answer_vi": "Đóng tất cả các cửa sổ và đặt bật hệ thống sưởi ấm",
+              "answer_vi": "Đóng tất cả các cửa sổ và bật hệ thống sưởi ấm",
               "answer_code": "",
               "correct": false
             }
@@ -7067,7 +7067,7 @@
           "answers": [
             {
               "answer_en": "Wait until you're fit and well before driving",
-              "answer_vi": "Chờ cho đến khi bạn khỏe lạ rồi mới lái xe",
+              "answer_vi": "Chờ cho đến khi bạn khỏe lại rồi mới lái xe",
               "answer_code": "",
               "correct": true
             },
@@ -7141,7 +7141,7 @@
             },
             {
               "answer_en": "Check the label to see if the medicine will affect your driving",
-              "answer_vi": "Kiểm tra nhãn hiện để xem liệu thuốc có ảnh hưởng đến việc lái xe của bạn không",
+              "answer_vi": "Kiểm tra nhãn hiệu để xem liệu thuốc có ảnh hưởng đến việc lái xe của bạn không",
               "answer_code": "",
               "correct": true
             },
@@ -7341,7 +7341,7 @@
         },
         {
           "question_en": "You're about to drive your car. What should you do if you can't find the glasses you need to wear?",
-          "question_vi": "Bạn chuẩn bị điều khiển phương tiện. Bạn nên làm gì nếu bạn không thể tìm thấy chiếc kính?",
+          "question_vi": "Bạn chuẩn bị điều khiển phương tiện. Bạn nên làm gì nếu bạn không thể tìm thấy chiếc kính mà bạn cần phải đeo?",
           "question_code": "",
           "answers": [
             {
@@ -7620,7 +7620,7 @@
         },
         {
           "question_en": "You're driving a car fitted with automatic transmission. When would you use ‘kick down’?",
-          "question_vi": "Bạn đang lái một chiếc xe được trang bị hộp số tự động. Khi nào bạn sử dụng bộ gạt ?",
+          "question_vi": "Bạn đang lái một chiếc xe được trang bị hộp số tự động. Khi nào bạn sử dụng bộ gạt?",
           "question_code": "",
           "answers": [
             {
@@ -7786,7 +7786,7 @@
             },
             {
               "answer_en": "Reflections of traffic in windows",
-              "answer_vi": "Nhìn phản chiếu của phương tiên giao thông qua cửa sổ",
+              "answer_vi": "Nhìn phản chiếu của phương tiện giao thông qua các cửa sổ",
               "answer_code": "",
               "correct": true
             },
@@ -7837,7 +7837,7 @@
         },
         {
           "question_en": "Why should the junction on the left be kept clear?",
-          "question_vi": "Tại sao đường giao nhau bên trái phải được giữ thông thoáng?",
+          "question_vi": "Tại sao đường giao nhau bên trái cần được giữ thông thoáng?",
           "question_code": "BB1748.gif",
           "answers": [
             {
@@ -8008,7 +8008,7 @@
             },
             {
               "answer_en": "They may be following you closely",
-              "answer_vi": "Họ có thể đang sát bạn ở cự li gần",
+              "answer_vi": "Họ có thể đang theo sát bạn ở cự li gần",
               "answer_code": "",
               "correct": false
             },
@@ -8153,7 +8153,7 @@
         {
           "question_en": "You see a pedestrian carrying a white stick that also has a red band. What does this mean?",
           "question_vi": "Bạn thấy một người đi bộ mang theo một cây gậy màu trắng cùng một dải băng màu đỏ. Điều đó có nghĩa là gì?",
-          "question_code": "AB2136.gif",
+          "question_code": "AB2136.jpg",
           "answers": [
             {
               "answer_en": "They have limited mobility",
@@ -8556,7 +8556,7 @@
         {
           "question_en": "What action should you take when you see flashing amber lights under a school warning sign?",
           "question_vi": "Bạn nên làm gì khi thấy đèn màu hổ phách nhấp nháy dưới biển cảnh báo trường học?",
-          "question_code": "AB2516.gif",
+          "question_code": "AB2516.jpg",
           "answers": [
             {
               "answer_en": "Reduce speed until you're clear of the area",
@@ -8648,7 +8648,7 @@
         },
         {
           "question_en": "You're following two cyclists as they approach a roundabout in the left-hand lane. Where would you expect the cyclists to go?",
-          "question_vi": "Bạn đang theo sau hai người đi xe đạp khi họ đến gần bùng binh ở làn đường phía bên trái. Bạn nghĩ họ sẽ đi hướng nào?",
+          "question_vi": "Bạn đang theo sau hai người đi xe đạp khi họ đến gần vòng xuyến ở làn đường phía bên trái. Bạn nghĩ họ sẽ đi hướng nào?",
           "question_code": "",
           "answers": [
             {
@@ -8711,7 +8711,7 @@
         {
           "question_en": "You see a horse rider as you approach a roundabout. What should you do if they're signalling right but keeping well to the left?",
           "question_vi": "Bạn nhìn thấy một người cưỡi ngựa khi bạn đang tiến đến gần vòng xuyến. Bạn nên làm gì nếu họ đang ra hiệu bên phải nhưng vẫn đi về bên trái?",
-          "question_code": "",
+          "question_code": "AB2564.jpg",
           "answers": [
             {
               "answer_en": "Proceed as normal",
@@ -8927,7 +8927,7 @@
         },
         {
           "question_en": "What does it mean when a moving vehicle is showing a flashing amber beacon?",
-          "question_vi": "Điều gì có nghĩa là khi một phương tiện đang di chuyển bật đèn nháy màu hổ phách?",
+          "question_vi": "Điều này có nghĩa là khi một phương tiện đang di chuyển bật đèn nháy màu hổ phách?",
           "question_code": "",
           "answers": [
             {
@@ -9144,7 +9144,7 @@
         },
         {
           "question_en": "You're approaching this roundabout. What should you do when a cyclist is keeping to the left while signalling to turn right?",
-          "question_vi": "Bạn đang đến gần bùng binh này. Bạn nên làm gì khi người đi xe đạp đang đi bên trái và báo hiệu rẽ phải?",
+          "question_vi": "Bạn đang đến gần vòng xuyến này. Bạn nên làm gì khi người đi xe đạp đang đi bên trái và báo hiệu rẽ phải?",
           "question_code": "AB2849.jpg",
           "answers": [
             {
@@ -9269,7 +9269,7 @@
         {
           "question_en": "This junction, controlled by traffic lights, has a marked area between two stop lines. What's this for?",
           "question_vi": "Ngã ba này, được điều khiển bởi đèn giao thông, có một khu vực được đánh dấu giữa hai vạch dừng. Cái này dùng để làm gì?",
-          "question_code": "AB2860.gif",
+          "question_code": "AB2860.jpg",
           "answers": [
             {
               "answer_en": "To allow taxis to position in front of other traffic",
@@ -9331,7 +9331,7 @@
         {
           "question_en": "What should you do when you're passing loose sheep on the road?",
           "question_vi": "Bạn nên làm gì khi đi qua những con cừu đang thả rông trên đường?",
-          "question_code": "AB2908.gif",
+          "question_code": "AB2908.jpg",
           "answers": [
             {
               "answer_en": "Briefly sound your horn",
@@ -9795,7 +9795,7 @@
         },
         {
           "question_en": "Why should you allow extra room while overtaking a motorcyclist on a windy day?",
-          "question_vi": "Tại sao bạn nên nhường nhiều hơn cho người điều khiển xe máy khi vượt họ vào một ngày đầy gió?",
+          "question_vi": "Tại sao bạn nên nhường nhiều chỗ hơn cho người điều khiển xe máy khi vượt họ vào một ngày đầy gió?",
           "question_code": "",
           "answers": [
             {
@@ -10040,7 +10040,7 @@
             },
             {
               "answer_en": "The load on the lorry might be unstable",
-              "answer_vi": "Tải trên xe tải có thể không ổn định",
+              "answer_vi": "Hàng hóa chất trên xe tải có thể không ổn định",
               "answer_code": "",
               "correct": false
             }
@@ -10049,7 +10049,7 @@
         {
           "question_en": "You're following a long vehicle as it approaches a crossroads. What should you do if it signals left but moves out to the right?",
           "question_vi": "Bạn đang theo sau một chiếc xe tải dài khi nó đến gần ngã tư. Bạn nên làm gì nếu nó báo hiệu bên trái nhưng lại di chuyển sang bên phải?",
-          "question_code": "",
+          "question_code": "AB2179.gif",
           "answers": [
             {
               "answer_en": "Get closer in order to pass it quickly",
@@ -10080,7 +10080,7 @@
         {
           "question_en": "You're following a long vehicle approaching a crossroads. What should you do if the driver signals right but moves close to the left-hand kerb?",
           "question_vi": "Bạn đang theo sau một chiếc xe tải dài đang đến gần ngã tư. Bạn nên làm gì nếu người lái xe ra hiệu bên phải nhưng lại đi sát lề đường bên trái?",
-          "question_code": "",
+          "question_code": "AB2180.gif",
           "answers": [
             {
               "answer_en": "Warn the driver about the wrong signal",
@@ -10111,7 +10111,7 @@
         {
           "question_en": "You’re approaching a mini-roundabout. What should you do if a long vehicle in front signals left but positions over to the right?",
           "question_vi": "Bạn đang đến gần vòng xuyến nhỏ. Bạn nên làm gì nếu một chiếc xe tải dài phía trước báo hiệu bên trái nhưng lại vượt qua bên phải?",
-          "question_code": "",
+          "question_code": "AB2181.gif",
           "answers": [
             {
               "answer_en": "Sound your horn",
@@ -10266,7 +10266,7 @@
         {
           "question_en": "What should you do when you're approaching a bus that's signalling to move away from a bus stop?",
           "question_vi": "Bạn nên làm gì khi đến gần một chiếc xe buýt đang báo hiệu di chuyển khỏi trạm xe buýt?",
-          "question_code": "",
+          "question_code": "AB2733.gif",
           "answers": [
             {
               "answer_en": "Get past before it moves",
@@ -10288,7 +10288,7 @@
             },
             {
               "answer_en": "Signal left and wave the bus on",
-              "answer_vi": "Xi nhan trái trái và vẫy xe buýt",
+              "answer_vi": "Xi nhan trái và vẫy xe buýt",
               "answer_code": "",
               "correct": false
             }
@@ -10363,7 +10363,7 @@
           "answers": [
             {
               "answer_en": "Slow down and be prepared to wait",
-              "answer_vi": "Chậm lại và sẵn sàng chờ đợi",
+              "answer_vi": "Đi chậm lại và sẵn sàng chờ đợi",
               "answer_code": "",
               "correct": true
             },
@@ -10420,7 +10420,7 @@
         },
         {
           "question_en": "Why is it more difficult to overtake a large vehicle than a car?",
-          "question_vi": "Tại sao vượt xe trọn tải lớn lại khó hơn xe ô tô?",
+          "question_vi": "Tại sao vượt xe trọng tải lớn lại khó hơn xe ô tô?",
           "question_code": "",
           "answers": [
             {
@@ -10567,7 +10567,7 @@
             },
             {
               "answer_en": "Because trams can't steer to avoid obstructions",
-              "answer_vi": "Vì xe điện không thể lái để tránh các vật cản",
+              "answer_vi": "Vì xe điện không thể đánh lái để tránh các vật cản",
               "answer_code": "",
               "correct": true
             }
@@ -10606,7 +10606,7 @@
         },
         {
           "question_en": "You're driving in heavy traffic on a wet road. Which lights should you use if there's a lot of surface spray?",
-          "question_vi": "Bạn đang lái xe trong dòng xe cộ đông đúc trên một con đường ướt. Bạn nên sử dụng đèn nào nếu nước bắn lên nhiều?",
+          "question_vi": "Bạn đang lái xe trong dòng xe cộ đông đúc trên một con đường ẩm ướt. Bạn nên sử dụng đèn nào nếu nước bắn lên nhiều?",
           "question_code": "",
           "answers": [
             {
@@ -10860,7 +10860,7 @@
         {
           "question_en": "What colour are the reflective studs along the left-hand edge of the motorway?",
           "question_vi": "Các đinh phản quang dọc theo mép bên trái của đường cao tốc có màu gì?",
-          "question_code": "",
+          "question_code": "AB2570.gif",
           "answers": [
             {
               "answer_en": "Green",
@@ -10984,7 +10984,7 @@
         {
           "question_en": "You're travelling on a road that has road humps. What should you do when the driver in front is travelling more slowly than you?",
           "question_vi": "Bạn đang đi trên một con đường có gờ giảm tốc. Bạn nên làm gì khi người lái xe phía trước di chuyển chậm hơn bạn?",
-          "question_code": "AB2640.gif",
+          "question_code": "AB2640.jpg",
           "answers": [
             {
               "answer_en": "Sound your horn",
@@ -11325,7 +11325,7 @@
         {
           "question_en": "When may front fog lights be used?",
           "question_vi": "Khi nào có thể sử dụng đèn xuyên sương mù phía trước?",
-          "question_code": "BB1325.gif",
+          "question_code": "BB1325.jpg",
           "answers": [
             {
               "answer_en": "When visibility is seriously reduced",
@@ -11356,7 +11356,7 @@
         {
           "question_en": "You're driving with your front fog lights switched on. What should you do if the fog has cleared?",
           "question_vi": "Bạn đang lái xe với đèn sương mù phía trước được bật. Bạn nên làm gì nếu sương mù đã tan?",
-          "question_code": "",
+          "question_code": "BB1330.gif",
           "answers": [
             {
               "answer_en": "Leave them on if other drivers have their lights on",
@@ -11496,7 +11496,7 @@
             },
             {
               "answer_en": "By changing to a higher gear",
-              "answer_vi": "Bằng cách thay đổi sang sốcao hơn",
+              "answer_vi": "Bằng cách thay đổi sang số cao hơn",
               "answer_code": "",
               "correct": false
             },
@@ -12105,7 +12105,7 @@
         {
           "question_en": "Which vehicles should use the left-hand lane on a three-lane motorway?",
           "question_vi": "Những phương tiện nào nên sử dụng làn bên trái trên đường cao tốc ba làn?",
-          "question_code": "",
+          "question_code": "AB2223.gif",
           "answers": [
             {
               "answer_en": "Any vehicle that isn't overtaking",
@@ -12322,7 +12322,7 @@
         {
           "question_en": "What colour are the reflective studs between the lanes on a motorway?",
           "question_vi": "Đinh phản quang giữa các làn đường trên cao tốc có màu gì?",
-          "question_code": "",
+          "question_code": "AB2243.gif",
           "answers": [
             {
               "answer_en": "Green",
@@ -12570,7 +12570,7 @@
         {
           "question_en": "You're on a three-lane motorway. Which lane are you in if there are red reflective studs on your left and white ones to your right?",
           "question_vi": "Bạn đang đi trên đường cao tốc ba làn. Bạn đang ở làn nào nếu có đinh phản quang màu đỏ ở bên trái và đinh màu trắng ở bên phải?",
-          "question_code": "",
+          "question_code": "AB2612.gif",
           "answers": [
             {
               "answer_en": "In the right-hand lane",
@@ -12636,13 +12636,13 @@
           "answers": [
             {
               "answer_en": "Powered mobility scooters",
-              "answer_vi": "Xe tay ga và xe cho người khuyết tận có trợ lực",
+              "answer_vi": "Xe tay ga và xe cho người khuyết tật có trợ lực",
               "answer_code": "",
               "correct": true
             },
             {
               "answer_en": "Motorcycles over 50 cc",
-              "answer_vi": "Xe gắng máy có dung tích xi lanh trên 50cc",
+              "answer_vi": "Xe gắn máy có dung tích xi lanh trên 50cc",
               "answer_code": "",
               "correct": false
             },
@@ -12756,7 +12756,7 @@
         {
           "question_en": "You're on a motorway that isn't subject to smart motorway regulations. When should you use the hard shoulder?",
           "question_vi": "Bạn đang đi trên đường cao tốc không tuân theo các quy định về đường cao tốc thông minh. Khi nào bạn nên sử dụng lề đường?",
-          "question_code": "",
+          "question_code": "AB2747.gif",
           "answers": [
             {
               "answer_en": "When you're stopping in an emergency",
@@ -12778,7 +12778,7 @@
             },
             {
               "answer_en": "When you're joining the motorway",
-              "answer_vi": "Khi bạn tham nhập làn vào đường cao tốc",
+              "answer_vi": "Khi bạn tham gia nhập làn vào đường cao tốc",
               "answer_code": "",
               "correct": false
             }
@@ -12973,7 +12973,7 @@
         {
           "question_en": "Traffic officers operate on motorways and some primary routes in England and Wales. What are they authorised to do?",
           "question_vi": "Hệ thống kiếm soát giao thông được áp dụng trên đường cao tốc và một số tuyến đường chính ở Anh và xứ Wales. Họ được ủy quyền để làm gì?",
-          "question_code": "AB2788.gif",
+          "question_code": "",
           "answers": [
             {
               "answer_en": "Stop and arrest drivers who break the law",
@@ -13231,7 +13231,7 @@
             },
             {
               "answer_en": "Slow down and watch for further signals",
-              "answer_vi": "Chạy chậm lại và theo dõi các tín hiệu khác",
+              "answer_vi": "Đi chậm lại và theo dõi các tín hiệu khác",
               "answer_code": "",
               "correct": false
             },
@@ -13376,7 +13376,7 @@
         {
           "question_en": "When should you use the left-hand lane of a motorway?",
           "question_vi": "Khi nào bạn nên sử dụng làn bên trái của đường cao tốc?",
-          "question_code": "",
+          "question_code": "BB1197.gif",
           "answers": [
             {
               "answer_en": "When your vehicle breaks down",
@@ -13825,7 +13825,7 @@
             },
             {
               "answer_en": "By street lighting",
-              "answer_vi": "Bằngđèn giao thông",
+              "answer_vi": "Bằng đèn giao thông",
               "answer_code": "",
               "correct": true
             },
@@ -14063,7 +14063,7 @@
         {
           "question_en": "When should you use the right-hand lane of a three-lane dual carriageway?",
           "question_vi": "Khi nào bạn nên sử dụng làn bên phải của đường hai chiều có ba làn đường?",
-          "question_code": "",
+          "question_code": "AB2269.gif",
           "answers": [
             {
               "answer_en": "When you're overtaking only",
@@ -14465,7 +14465,7 @@
         },
         {
           "question_en": "You're travelling along a residential street. There are parked vehicles on the left-hand side. Why should you keep your speed down?",
-          "question_vi": "Bạn đang đi dọc theo một con con đường đông dân cư. Có phương đậu bên tay trái. Tại sao bạn nên giảm tốc độ?",
+          "question_vi": "Bạn đang đi dọc theo một con đường đông dân cư. Có phương tiện đậu bên tay trái. Tại sao bạn nên giảm tốc độ?",
           "question_code": "",
           "answers": [
             {
@@ -14600,13 +14600,13 @@
             },
             {
               "answer_en": "12 metres (39 feet)",
-              "answer_vi": "12 mét (39 bộ)",
+              "answer_vi": "12 mét (39 feet)",
               "answer_code": "",
               "correct": false
             },
             {
               "answer_en": "15 metres (49 feet)",
-              "answer_vi": "15 mét (49 bộ)",
+              "answer_vi": "15 mét (49 feet)",
               "answer_code": "",
               "correct": false
             },
@@ -14953,7 +14953,7 @@
             },
             {
               "answer_en": "Signal left just after you pass the exit before the one you're going to take",
-              "answer_vi": "Xi nhan trái ngay sau khi ra khỉ vòng xuyến và trước khi đi vào đường mới",
+              "answer_vi": "Xi nhan trái ngay sau khi ra khỏi vòng xuyến và trước khi đi vào đường mới",
               "answer_code": "",
               "correct": true
             }
@@ -15023,8 +15023,8 @@
         },
         {
           "question_en": "What's the speed limit for a car towing a caravan on a dual carriageway?",
-          "question_vi": "Giới hạn tốc độ áp dụng cho ô tô kéo theo một xe thùng trên đường hai chiều là bao nhiêu?",
-          "question_code": "",
+          "question_vi": "Giới hạn tốc độ áp dụng cho ô tô kéo theo một xe thùng du lịch trên đường hai chiều là bao nhiêu?",
+          "question_code": "BB1209.gif",
           "answers": [
             {
               "answer_en": "50 mph",
@@ -15737,7 +15737,7 @@
         {
           "question_en": "You're driving on a road that has a cycle lane. What does it mean if the lane is marked by a broken white line?",
           "question_vi": "Bạn đang lái xe trên đường có làn đường dành cho xe đạp. Điều này có nghĩa là gì nếu làn đường được đánh dấu bằng một vạch trắng đứt đoạn?",
-          "question_code": "BB1747.gif",
+          "question_code": "BB1747.jpg",
           "answers": [
             {
               "answer_en": "You shouldn't drive in the lane unless it's unavoidable",
@@ -15768,7 +15768,7 @@
         {
           "question_en": "When are you allowed to park in a parking bay for disabled drivers?",
           "question_vi": "Khi nào bạn được phép đậu xe trong khoang đậu xe dành cho người khuyết tật?",
-          "question_code": "",
+          "question_code": "BB1784.jpg",
           "answers": [
             {
               "answer_en": "When you have a Blue Badge",
@@ -15928,7 +15928,7 @@
         {
           "question_en": "What does this sign mean?",
           "question_vi": "Biển báo này có nghĩa là gì?",
-          "question_code": "AB2296.jpg",
+          "question_code": "AB2296.gif",
           "answers": [
             {
               "answer_en": "Maximum speed limit with traffic calming",
@@ -17602,7 +17602,7 @@
         {
           "question_en": "What does a red traffic light mean?",
           "question_vi": "Đèn đỏ có nghĩa là gì?",
-          "question_code": "",
+          "question_code": "AB2384.gif",
           "answers": [
             {
               "answer_en": "You should stop unless turning left",
@@ -17633,7 +17633,7 @@
         {
           "question_en": "At traffic lights, what does it mean when the amber light shows on its own?",
           "question_vi": "Tại đèn giao thông, tín hiệu đèn màu hổ phách có nghĩa là gì?",
-          "question_code": "",
+          "question_code": "AB2385.gif",
           "answers": [
             {
               "answer_en": "Prepare to go",
@@ -17664,7 +17664,7 @@
         {
           "question_en": "You're at a junction controlled by traffic lights. When should you wait at a green light?",
           "question_vi": "Bạn đang ở một giao lộ được điều khiển bởi đèn giao thông. Khi nào bạn nên đợi khi đèn xanh?",
-          "question_code": "",
+          "question_code": "AB2388.gif",
           "answers": [
             {
               "answer_en": "When pedestrians are waiting to cross",
@@ -18052,7 +18052,7 @@
             },
             {
               "answer_en": "Use the siren, overtake, cut in front and stop",
-              "answer_vi": "Dùng còi báo động, vượt lên, cắtđầu xe và dừng lại",
+              "answer_vi": "Dùng còi báo động, vượt lên, cắt đầu xe và dừng lại",
               "answer_code": "",
               "correct": false
             },
@@ -18563,7 +18563,7 @@
         {
           "question_en": "What should you do when you see this sign at a crossroads?",
           "question_vi": "Bạn nên làm gì khi nhìn thấy biển báo này ở ngã tư đường?",
-          "question_code": "AB2579.jpg",
+          "question_code": "AB2579.gif",
           "answers": [
             {
               "answer_en": "Maintain the same speed",
@@ -19028,7 +19028,7 @@
         {
           "question_en": "You see this amber traffic light ahead. Which light, or lights, will come on next?",
           "question_vi": "Bạn nhìn thấy đèn giao thông màu hổ phách này ở phía trước. Đèn nà sẽ bật sáng tiếp theo?",
-          "question_code": "AB2758.jpg",
+          "question_code": "AB2758.gif",
           "answers": [
             {
               "answer_en": "Red alone",
@@ -19287,13 +19287,13 @@
             {
               "answer_en": "",
               "answer_vi": "",
-              "answer_code": "AB2768b.gif",
+              "answer_code": "AB2768b.jpg",
               "correct": false
             },
             {
               "answer_en": "",
               "answer_vi": "",
-              "answer_code": "AB2768c.gif",
+              "answer_code": "AB2768c.jpg",
               "correct": true
             },
             {
@@ -19338,7 +19338,7 @@
         {
           "question_en": "What should you do when you're approaching traffic lights that have red and amber showing together?",
           "question_vi": "Bạn nên làm gì khi đến gần đèn giao thông có màu đỏ và màu hổ phách cùng hiển thị?",
-          "question_code": "",
+          "question_code": "AB2771.gif",
           "answers": [
             {
               "answer_en": "Pass the lights if the road is clear",
@@ -19648,7 +19648,7 @@
         {
           "question_en": "What should you be aware of if you've just passed this sign?",
           "question_vi": "Bạn nên lưu ý điều gì nếu bạn vừa vượt qua biển báo này?",
-          "question_code": "AB2899.gif",
+          "question_code": "AB2899.jpg",
           "answers": [
             {
               "answer_en": "This is a single-track road",
@@ -19679,7 +19679,7 @@
         {
           "question_en": "You're approaching traffic lights and the red light is showing. What signal will show next?",
           "question_vi": "Bạn đang đến gần đèn giao thông và đèn đỏ đang hiển thị. Tín hiệu gì sẽ hiển thị tiếp theo?",
-          "question_code": "",
+          "question_code": "AB2909.gif",
           "answers": [
             {
               "answer_en": "Red and amber",
@@ -19979,7 +19979,7 @@
             },
             {
               "answer_en": "One year after the date it was issued",
-              "answer_vi": "Một năm sau ngàycấp",
+              "answer_vi": "Một năm sau ngày cấp",
               "answer_code": "",
               "correct": true
             },
@@ -20010,7 +20010,7 @@
             },
             {
               "answer_en": "A document issued before you receive your registration document",
-              "answer_vi": "Một tài liệu được phát hành trước khi bạn nhận được tài liệu đăng ký của mình",
+              "answer_vi": "Một tài liệu được cấp trước khi bạn nhận được tài liệu đăng ký của mình",
               "answer_code": "",
               "correct": false
             },
@@ -20210,7 +20210,7 @@
         },
         {
           "question_en": "When must your vehicle have valid insurance cover?",
-          "question_vi": "Khi nào phươn tiện của bạn phải có bảo hiểm hợp lệ?",
+          "question_vi": "Khi nào phương tiện của bạn phải có bảo hiểm hợp lệ?",
           "question_code": "",
           "answers": [
             {
@@ -21307,7 +21307,7 @@
               "answer_en": "Keep them warm and comfortable",
               "answer_vi": "Giữ cho họ ấm áp và thoải mái",
               "answer_code": "",
-              "correct": false
+              "correct": true
             },
             {
               "answer_en": "Give them something to eat",
@@ -22500,7 +22500,7 @@
             },
             {
               "answer_en": "The person who loaded the vehicle",
-              "answer_vi": "Người chấ hàng hóa lên xe",
+              "answer_vi": "Người chất hàng hóa lên xe",
               "answer_code": "",
               "correct": false
             },
@@ -22514,7 +22514,7 @@
         },
         {
           "question_en": "You're planning to tow a caravan. What will help the handling of the combination?",
-          "question_vi": "Bạn đang dự định lắp xe thùng kéo phía sau. Sự kết hợp nào sẽ giúp cho việc di chuyển của xe?",
+          "question_vi": "Bạn đang dự định lắp xe thùng du lịch để kéo phía sau. Sự kết hợp nào sẽ giúp cho việc di chuyển của xe?",
           "question_code": "",
           "answers": [
             {
@@ -22545,7 +22545,7 @@
         },
         {
           "question_en": "Are passengers allowed to ride in a caravan that's being towed?",
-          "question_vi": "Hành khách có được phép ngồi trong xe thùng đang được kéo không?",
+          "question_vi": "Hành khách có được phép ngồi trong xe thùng du lịch đang được kéo không?",
           "question_code": "",
           "answers": [
             {
@@ -22607,7 +22607,7 @@
         },
         {
           "question_en": "You wish to tow a trailer. Where would you find the maximum noseweight for your vehicle’s tow hitch?",
-          "question_vi": "Bạn muốn kéo một chiếc xe kéo. Bạn sẽ tìm trọng lượng tối đa được chất lên xe ở đâu?",
+          "question_vi": "Bạn muốn kéo một chiếc xe kéo. Bạn sẽ tìm thấy trọng lượng tối đa được chất lên xe ở đâu?",
           "question_code": "",
           "answers": [
             {
@@ -22669,7 +22669,7 @@
         },
         {
           "question_en": "You're carrying a child under three years old in your car. Which restraint is suitable for a child of this age?",
-          "question_vi": "Bạn đang chở một đứa trẻ dưới ba tuổi trong xe của bạn. Những phương phán an toàn nào phù hợp với một đứa trẻ ở độ tuổi này?",
+          "question_vi": "Bạn đang chở một đứa trẻ dưới ba tuổi trong xe của bạn. Những phương pháp an toàn nào phù hợp với một đứa trẻ ở độ tuổi này?",
           "question_code": "",
           "answers": [
             {
