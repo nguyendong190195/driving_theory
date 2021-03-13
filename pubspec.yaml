@@ -34,6 +34,7 @@ dependencies:
   launch_review: ^1.0.1
   flutter_email_sender: ^4.0.0
   url_launcher: ^5.7.10
+  photo_view: ^0.11.1
 
 dev_dependencies:
   flutter_test:
@@ -54,6 +55,7 @@ flutter:
     - images/background_result.jpeg
     - images/logo_app_2.jpg
     - images/logo_app_2.png
+    - images/ic_close.png
     - images/ic_logo_app.png
     - images/image_background_finish.jpeg
     - data/data.json

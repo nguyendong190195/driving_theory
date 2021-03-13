@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:driving_theory/extension/colors_extension.dart';
+import 'package:driving_theory/extension/gallery_photo_view_wrapper.dart';
 import 'package:driving_theory/extension/utility.dart';
 import 'package:driving_theory/models/topic_object.dart';
 import 'package:flutter/material.dart';
@@ -166,116 +167,217 @@ class _ReviewMockTestState extends State<ReviewMockTestScreen> {
 
   Widget buildItemReview(int index) {
     ListQuestion question =
-        widget.dataTopic.data[widget.index].listQuestion[index];
-    return Container(
-      child: Container(
-        color: Colors.white,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              child: ListTile(
-                contentPadding:
-                    EdgeInsets.symmetric(horizontal: 8.0, vertical: 0.0),
-                title: Text(
-                  (index + 1).toString() + '. ' + question.questionEn,
-                  style: Utility.textStyleQuestionEn,
-                ),
-                subtitle: Text(
-                  question.questionVi,
-                  style: Utility.textStyleQuestionVi,
+    widget.dataTopic.data[widget.index].listQuestion[index];
+    if (question.questionCode == null || question.questionCode.isEmpty) {
+      return SingleChildScrollView(
+        child: Container(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                child: ListTile(
+                  contentPadding:
+                  EdgeInsets.symmetric(horizontal: 8.0, vertical: 0.0),
+                  title: Text(
+                    (index + 1).toString() + '. ' + question.questionEn,
+                    style: Utility.textStyleQuestionEn,
+                  ),
                 ),
               ),
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                getItemAnswer(question, 0),
-                getItemAnswer(question, 1),
-                getItemAnswer(question, 2),
-                getItemAnswer(question, 3),
-              ],
-            ),
-          ],
-        ),
-      ),
-      decoration: new BoxDecoration(
-        boxShadow: [
-          new BoxShadow(
-            color: Colors.grey[400],
-            blurRadius: 1.0,
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  getItemAnswer(question, 0),
+                  getItemAnswer(question, 1),
+                  getItemAnswer(question, 2),
+                  getItemAnswer(question, 3),
+                ],
+              ),
+            ],
           ),
-        ],
-      ),
-    );
+        ),
+      );
+    } else {
+      return SingleChildScrollView(
+        child: Container(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(children: [
+                Expanded(
+                  flex: 3,
+                  child: Container(
+                    child: ListTile(
+                      contentPadding:
+                      EdgeInsets.symmetric(horizontal: 8.0, vertical: 0.0),
+                      title: Text(
+                        (index + 1).toString() + '. ' + question.questionEn,
+                        style: Utility.textStyleQuestionEn,
+                      ),
+                    ),
+                  ),
+                ),
+                Expanded(
+                    child: GestureDetector(
+                      onTap: (){
+                        Utility.open(context, GalleryExampleItem(
+                          id: "tag1",
+                          resource: 'images/imagecontent/' + question.questionCode.trim(),
+                        ));
+                      },
+                      child: Container(
+                        margin: EdgeInsets.only(right: 8.0, top: 8, bottom: 8),
+                        child: Image(
+                            image: AssetImage(
+                                'images/imagecontent/' + question.questionCode.trim()),
+                            fit: BoxFit.cover),
+                      ),
+                    ),
+                    flex: 2)
+              ]),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  getItemAnswer(question, 0),
+                  getItemAnswer(question, 1),
+                  getItemAnswer(question, 2),
+                  getItemAnswer(question, 3),
+                ],
+              ),
+            ],
+          ),
+        ),
+      );
+    }
   }
 
 
+
   Widget getItemAnswer(ListQuestion question, int numAnswer) {
-    return GestureDetector(
-      onTap: () {
-        if (!question.isSelected) {
-          question.answers[numAnswer].isSelected = true;
-          setState(() {
-            question.isSelected = true;
-            widget.dataTopic.title = '';
-            Utility.saveDataByName(widget.dataTopic);
-          });
-        }
-      }   ,
-      child: Container(
-        margin: EdgeInsets.only(left: 5, right: 5),
-        child: Card(
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10.0),
-              side: BorderSide(
-                  color: Utility.getColorInSelectBorder(
-                      question, numAnswer, true))),
-          color: Utility.getColorInSelect(question, numAnswer),
-          child: Row(
-            children: [
-              Center(
-                  child: Container(
-                    width: 30,
-                    margin: EdgeInsets.only(left: 10),
-                    height: 30,
-                    child: Center(
-                        child: Text(
-                          Utility.getTitleAnswer(numAnswer),
-                          style: Utility.textStyleTitleAnswer,
-                        )),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        color: Colors.blue),
-                  )),
-              SizedBox(
-                width: MediaQuery. of(context). size. width - 50,
-                child: ListTile(
-                  contentPadding:
-                  EdgeInsets.symmetric(horizontal: 8.0, vertical: 5.0),
-                  title: Text(
-                    question.answers[numAnswer].answerEn,
-                    style: (question.isSelected &&
-                        (question.answers[numAnswer].correct ||
-                            question.answers[numAnswer].isSelected))
-                        ? Utility.textStyleAnswerEnWhite
-                        : Utility.textStyleAnswerEn,
+    if (question.answers[numAnswer].answerCode == null ||
+        question.answers[numAnswer].answerCode.isEmpty) {
+      return GestureDetector(
+        onTap: () {
+
+        },
+        child: Container(
+          margin: EdgeInsets.only(left: 5, right: 5),
+          child: Card(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.0),
+                side: BorderSide(
+                    color: question.answers[numAnswer].isSelected
+                        ? HexColor.colorAnswerCorrect()
+                        : HexColor.colorAnswerNormal())),
+            color: question.answers[numAnswer].isSelected
+                ? HexColor.colorAnswerCorrect()
+                : HexColor.colorAnswerNormal(),
+            child: Row(
+              children: [
+                Center(
+                    child: Container(
+                      width: 30,
+                      margin: EdgeInsets.only(left: 10),
+                      height: 30,
+                      child: Center(
+                          child: Text(
+                            Utility.getTitleAnswer(numAnswer),
+                            style: Utility.textStyleTitleAnswer,
+                          )),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          color: Colors.blue),
+                    )),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width - 50,
+                  child: ListTile(
+                    contentPadding:
+                    EdgeInsets.symmetric(horizontal: 8.0, vertical: 5.0),
+                    title: Text(
+                      question.answers[numAnswer].answerEn,
+                      style: (question.isSelected &&
+                          (question.answers[numAnswer].correct ||
+                              question.answers[numAnswer].isSelected))
+                          ? Utility.textStyleAnswerEnWhite
+                          : Utility.textStyleAnswerEn,
+                    ),
                   ),
-                  subtitle: Text(
-                    question.answers[numAnswer].answerVi,
-                    style: (question.isSelected &&
-                        (question.answers[numAnswer].correct ||
-                            question.answers[numAnswer].isSelected))
-                        ? Utility.textStyleAnswerViWhite
-                        : Utility.textStyleAnswerVi,
+                )
+              ],
+            ),
+            margin: EdgeInsets.only(bottom: 10),
+          ),
+        ),
+      );
+    } else {
+      return GestureDetector(
+        onTap: () {
+
+        },
+        child: Container(
+          margin: EdgeInsets.only(left: 5, right: 5),
+          child: Card(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.0),
+                side: BorderSide(
+                    color: Utility.getColorInSelectBorder(
+                        question, numAnswer, true))),
+            color: Utility.getColorInSelect(question, numAnswer),
+            child: Row(
+              children: [
+                Center(
+                    child: Container(
+                      width: 30,
+                      margin: EdgeInsets.only(left: 10),
+                      height: 30,
+                      child: Center(
+                          child: Text(
+                            Utility.getTitleAnswer(numAnswer),
+                            style: Utility.textStyleTitleAnswer,
+                          )),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          color: Colors.blue),
+                    )),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width - 150,
+                  height: 100,
+                  child: ListTile(
+                    contentPadding:
+                    EdgeInsets.symmetric(horizontal: 8.0, vertical: 5.0),
+                    title: Text(
+                      question.answers[numAnswer].answerEn,
+                      style: (question.isSelected &&
+                          (question.answers[numAnswer].correct ||
+                              question.answers[numAnswer].isSelected))
+                          ? Utility.textStyleAnswerEnWhite
+                          : Utility.textStyleAnswerEn,
+                    ),
                   ),
                 ),
-              )
-            ],
+                Expanded(
+                    child: GestureDetector(
+                      onTap: (){
+                        Utility.open(context, GalleryExampleItem(
+                          id: "tag1",
+                          resource: 'images/imagecontent/' + question.answers[numAnswer].answerCode.trim(),
+                        ));
+                      },
+                      child: Container(
+                        margin: EdgeInsets.only(right: 8.0, top: 8, bottom: 8),
+                        child: Image(
+                            image: AssetImage('images/imagecontent/' +
+                                question.answers[numAnswer].answerCode.trim()),
+                            fit: BoxFit.cover),
+                      ),
+                    ),
+                    flex: 2)
+              ],
+            ),
+            margin: EdgeInsets.only(bottom: 10),
           ),
-          margin: EdgeInsets.only(bottom: 10),
         ),
-      ),
-    );
+      );
+    }
   }
 }

@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'dart:ui';
 
 import 'package:driving_theory/extension/colors_extension.dart';
+import 'package:driving_theory/extension/gallery_photo_view_wrapper.dart';
 import 'package:driving_theory/models/topic_object.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -26,6 +27,22 @@ class Utility {
         break;
     }
   }
+
+   static void open(BuildContext context, GalleryExampleItem item) {
+     Navigator.push(
+       context,
+       MaterialPageRoute(
+         builder: (context) => GalleryPhotoViewWrapper(
+           galleryItems: [item],
+           backgroundDecoration: const BoxDecoration(
+             color: Colors.black,
+           ),
+           initialIndex: 0,
+           scrollDirection: Axis.horizontal,
+         ),
+       ),
+     );
+   }
 
    static TextStyle textStyleQuestionEn =
    TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0);

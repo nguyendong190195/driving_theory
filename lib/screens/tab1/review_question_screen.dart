@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:driving_theory/extension/colors_extension.dart';
+import 'package:driving_theory/extension/gallery_photo_view_wrapper.dart';
 import 'package:driving_theory/extension/utility.dart';
 import 'package:driving_theory/models/topic_object.dart';
 import 'package:flutter/material.dart';
@@ -22,6 +23,7 @@ class ReviewQuestionScreen extends StatefulWidget {
 }
 
 class _ReviewQuestionState extends State<ReviewQuestionScreen> {
+  bool verticalGallery = false;
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -324,12 +326,20 @@ class _ReviewQuestionState extends State<ReviewQuestionScreen> {
             flex: 4,
           ),
           Expanded(
-              child: Container(
-                margin: EdgeInsets.only(right: 8.0, top: 8, bottom: 8),
-                child: Image(
-                    image: AssetImage(
-                        'images/imagecontent/' + question.questionCode.trim()),
-                    fit: BoxFit.cover),
+              child: GestureDetector(
+                onTap: (){
+                  open(context, GalleryExampleItem(
+                    id: "tag1",
+                    resource: 'images/imagecontent/' + question.questionCode.trim(),
+                  ));
+                },
+                child: Container(
+                  margin: EdgeInsets.only(right: 8.0, top: 8, bottom: 8),
+                  child: Image(
+                      image: AssetImage(
+                          'images/imagecontent/' + question.questionCode.trim()),
+                      fit: BoxFit.cover),
+                ),
               ),
               flex: 3),
         ]);
@@ -353,12 +363,20 @@ class _ReviewQuestionState extends State<ReviewQuestionScreen> {
             flex: 4,
           ),
           Expanded(
-              child: Container(
-                margin: EdgeInsets.only(right: 8.0, top: 8, bottom: 8),
-                child: Image(
-                    image: AssetImage(
-                        'images/imagecontent/' + question.questionCode.trim()),
-                    fit: BoxFit.cover),
+              child: GestureDetector(
+                onTap: (){
+                  open(context, GalleryExampleItem(
+                    id: "tag1",
+                    resource: 'images/imagecontent/' + question.questionCode.trim(),
+                  ));
+                },
+                child: Container(
+                  margin: EdgeInsets.only(right: 8.0, top: 8, bottom: 8),
+                  child: Image(
+                      image: AssetImage(
+                          'images/imagecontent/' + question.questionCode.trim()),
+                      fit: BoxFit.cover),
+                ),
               ),
               flex: 3),
           Expanded(
@@ -384,6 +402,22 @@ class _ReviewQuestionState extends State<ReviewQuestionScreen> {
         ]);
       }
     }
+  }
+
+  void open(BuildContext context, GalleryExampleItem item) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => GalleryPhotoViewWrapper(
+          galleryItems: [item],
+          backgroundDecoration: const BoxDecoration(
+            color: Colors.black,
+          ),
+          initialIndex: 0,
+          scrollDirection: verticalGallery ? Axis.vertical : Axis.horizontal,
+        ),
+      ),
+    );
   }
 
   Widget getItemAnswer(ListQuestion question, int numAnswer) {
@@ -516,12 +550,20 @@ class _ReviewQuestionState extends State<ReviewQuestionScreen> {
                   ),
                 ),
                 Expanded(
-                    child: Container(
-                      margin: EdgeInsets.only(right: 8.0, top: 8, bottom: 8),
-                      child: Image(
-                          image: AssetImage('images/imagecontent/' +
-                              question.answers[numAnswer].answerCode),
-                          fit: BoxFit.cover),
+                    child: GestureDetector(
+                      onTap: (){
+                        open(context, GalleryExampleItem(
+                          id: "tag1",
+                          resource: 'images/imagecontent/' + question.answers[numAnswer].answerCode.trim(),
+                        ));
+                      },
+                      child: Container(
+                        margin: EdgeInsets.only(right: 8.0, top: 8, bottom: 8),
+                        child: Image(
+                            image: AssetImage('images/imagecontent/' +
+                                question.answers[numAnswer].answerCode),
+                            fit: BoxFit.cover),
+                      ),
                     ),
                     flex: 2)
               ],

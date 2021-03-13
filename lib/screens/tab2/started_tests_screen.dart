@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:driving_theory/extension/colors_extension.dart';
+import 'package:driving_theory/extension/gallery_photo_view_wrapper.dart';
 import 'package:driving_theory/extension/utility.dart';
 import 'package:driving_theory/models/topic_object.dart';
 import 'package:driving_theory/screens/tab2/review_mock_test_screen.dart';
@@ -218,12 +219,20 @@ class _StartedTestsState extends State<StartedTestsScreen> {
                   ),
                 ),
                 Expanded(
-                    child: Container(
-                      margin: EdgeInsets.only(right: 8.0, top: 8, bottom: 8),
-                      child: Image(
-                          image: AssetImage(
-                              'images/imagecontent/' + question.questionCode.trim()),
-                          fit: BoxFit.cover),
+                    child: GestureDetector(
+                      onTap: (){
+                        Utility.open(context, GalleryExampleItem(
+                          id: "tag1",
+                          resource: 'images/imagecontent/' + question.questionCode.trim(),
+                        ));
+                      },
+                      child: Container(
+                        margin: EdgeInsets.only(right: 8.0, top: 8, bottom: 8),
+                        child: Image(
+                            image: AssetImage(
+                                'images/imagecontent/' + question.questionCode.trim()),
+                            fit: BoxFit.cover),
+                      ),
                     ),
                     flex: 2)
               ]),
@@ -355,12 +364,20 @@ class _StartedTestsState extends State<StartedTestsScreen> {
                   ),
                 ),
                 Expanded(
-                    child: Container(
-                      margin: EdgeInsets.only(right: 8.0, top: 8, bottom: 8),
-                      child: Image(
-                          image: AssetImage('images/imagecontent/' +
-                              question.answers[numAnswer].answerCode),
-                          fit: BoxFit.cover),
+                    child: GestureDetector(
+                      onTap: (){
+                        Utility.open(context, GalleryExampleItem(
+                          id: "tag1",
+                          resource: 'images/imagecontent/' + question.answers[numAnswer].answerCode.trim(),
+                        ));
+                      },
+                      child: Container(
+                        margin: EdgeInsets.only(right: 8.0, top: 8, bottom: 8),
+                        child: Image(
+                            image: AssetImage('images/imagecontent/' +
+                                question.answers[numAnswer].answerCode),
+                            fit: BoxFit.cover),
+                      ),
                     ),
                     flex: 2)
               ],
